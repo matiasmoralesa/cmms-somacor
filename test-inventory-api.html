@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Inventory API</title>
+</head>
+<body>
+    <h1>Test Inventory API</h1>
+    <button onclick="testAPI()">Test API</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function testAPI() {
+            const resultEl = document.getElementById('result');
+            resultEl.textContent = 'Loading...';
+            
+            try {
+                // Get the backend URL from your production
+                const backendUrl = 'https://cmms-backend-service-aaaf32926a0cb59324c6e4e8.us-central1.run.app';
+                
+                // Get token from localStorage (if you're logged in)
+                const token = localStorage.getItem('token');
+                
+                const response = await fetch(`${backendUrl}/api/v1/inventory/spare-parts/`, {
+                    headers: {
+                        'Authorization': token ? `Bearer ${token}` : '',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                resultEl.textContent = JSON.stringify(data, null, 2);
+                
+                console.log('Response:', data);
+            } catch (error) {
+                resultEl.textContent = 'Error: ' + error.message;
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Airflow Providers
+apache-airflow-providers-google>=10.0.0
+apache-airflow-providers-postgres>=5.0.0
+
+# Data Processing
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.12.0
+
+# HTTP Requests
+requests>=2.28.0
+
+# PySpark (for Dataproc jobs)
+pyspark>=3.3.0

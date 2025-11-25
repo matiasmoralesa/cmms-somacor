@@ -1,0 +1,79 @@
+# ========================================
+# COMANDOS PARA CLOUD SHELL
+# ========================================
+# Copia y pega estos comandos en Cloud Shell
+# https://console.cloud.google.com/cloudshell
+# ========================================
+
+# 1. Crear el script de carga de datos
+cat > load_data.py << 'EOF'
+from apps.assets.models import Asset, Location
+from apps.work_orders.models import WorkOrder
+from apps.inventory.models import SparePart
+from apps.authentication.models import User
+from datetime import datetime, timedelta
+
+print('=== Creando Ubicaciones ===')
+locations_data = [
+    {'name': 'Faena La Coipa', 'address': 'Region de Atacama', 'description': 'Faena principal'},
+    {'name': 'Taller Mecanico', 'address': 'Faena La Coipa', 'description': 'Taller'},
+    {'name': 'Patio de Equipos', 'address': 'Faena La Coipa', 'description': 'Patio'},
+]
+locations = []
+for loc_data in locations_data:
+    location, created = Location.objects.get_or_create(name=loc_data['name'], defaults=loc_data)
+    print(f"  {loc_data['name']}: {'OK' if created else 'Ya existe'}")
+    locations.append(location)
+
+print('\n=== Creando Activos ===')
+admin_user = User.objects.get(email='admin@cmms.com')
+default_location = locations[0]
+assets_data = [
+    {'name': 'Camion Supersucker SS-001', 'asset_code': 'SS-001', 'vehicle_type': 'CAMION_SUPERSUCKER', 'serial_number': 'VLV2023SS001', 'license_plate': 'HJKL-12', 'status': 'OPERATIONAL', 'criticality': 'CRITICAL'},
+    {'name': 'Camioneta MDO CM-001', 'asset_code': 'CM-001', 'vehicle_type': 'CAMIONETA_MDO', 'serial_number': 'TOY2023CM001', 'license_plate': 'ABCD-34', 'status': 'OPERATIONAL', 'criticality': 'HIGH'},
+    {'name': 'Retroexcavadora RE-001', 'asset_code': 'RE-001', 'vehicle_type': 'RETROEXCAVADORA_MDO', 'serial_number': 'CAT2022RE001', 'license_plate': 'WXYZ-56', 'status': 'OPERATIONAL', 'criticality': 'HIGH'},
+    {'name': 'Cargador Frontal CF-001', 'asset_code': 'CF-001', 'vehicle_type': 'CARGADOR_FRONTAL_MDO', 'serial_number': 'KOM2023CF001', 'license_plate': 'PQRS-78', 'status': 'OPERATIONAL', 'criticality': 'CRITICAL'},
+    {'name': 'Minicargador MC-001', 'asset_code': 'MC-001', 'vehicle_type': 'MINICARGADOR_MDO', 'serial_number': 'BOB2023MC001', 'license_plate': 'MNOP-90', 'status': 'OPERATIONAL', 'criticality': 'MEDIUM'},
+]
+assets = []
+for asset_data in assets_data:
+    asset, created = Asset.objects.get_or_create(asset_code=asset_data['asset_code'], defaults={**asset_data, 'location': default_location, 'created_by': admin_user})
+    print(f"  {asset_data['name']}: {'OK' if created else 'Ya existe'}")
+    assets.append(asset)
+
+print('\n=== Creando Ordenes de Trabajo ===')
+types = ['CORRECTIVE', 'PREVENTIVE', 'PREDICTIVE']
+for i, asset in enumerate(assets[:3]):
+    wo_data = {'title': f'Mantenimiento {types[i]} - {asset.name}', 'description': f'Orden para {asset.name}', 'asset': asset, 'work_order_type': types[i], 'priority': 'HIGH', 'status': 'PENDING', 'scheduled_date': datetime.now() + timedelta(days=i), 'estimated_hours': 4, 'created_by': admin_user}
+    wo = WorkOrder.objects.create(**wo_data)
+    print(f"  {wo_data['title']}: OK")
+
+print('\n=== Creando Repuestos ===')
+parts_data = [
+    {'part_number': 'FLT-001', 'name': 'Filtro de Aceite', 'category': 'FILTROS', 'quantity': 25, 'minimum_stock': 10, 'unit_cost': 15000, 'location': 'Bodega A'},
+    {'part_number': 'ACE-001', 'name': 'Aceite Motor', 'category': 'LUBRICANTES', 'quantity': 50, 'minimum_stock': 20, 'unit_cost': 8500, 'location': 'Bodega B'},
+    {'part_number': 'NEU-001', 'name': 'Neumatico', 'category': 'NEUMATICOS', 'quantity': 8, 'minimum_stock': 4, 'unit_cost': 250000, 'location': 'Bodega C'},
+]
+for part_data in parts_data:
+    part, created = SparePart.objects.get_or_create(part_number=part_data['part_number'], defaults=part_data)
+    print(f"  {part_data['name']}: {'OK' if created else 'Ya existe'}")
+
+print('\n=== COMPLETADO ===')
+print(f'Total: {len(locations)} ubicaciones, {len(assets)} activos, 3 ordenes, {len(parts_data)} repuestos')
+EOF
+
+# 2. Ejecutar el script en Cloud Run
+gcloud run services proxy cmms-backend --region us-central1 &
+sleep 5
+python manage.py shell < load_data.py
+
+# 3. Limpiar
+rm load_data.py
+
+echo ""
+echo "=========================================="
+echo "DATOS CARGADOS EXITOSAMENTE"
+echo "=========================================="
+echo ""
+echo "Verifica en: https://cmms-somacor-produccion.web.app/"
+echo ""

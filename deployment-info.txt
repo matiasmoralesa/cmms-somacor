@@ -1,0 +1,26 @@
+﻿Informacion del Despliegue
+==========================
+Fecha: 2025-11-17 (Actualizado)
+Proyecto: argon-edge-478500-i8
+Cuenta: electronightx@gmail.com
+
+URLs de la Aplicación:
+- Frontend URL: https://cmms-somacor-prod.web.app
+- Backend URL: https://cmms-backend-4qfhh2wkzq-uc.a.run.app
+- API Docs: https://cmms-backend-4qfhh2wkzq-uc.a.run.app/api/docs/
+
+Infraestructura:
+- Connection Name: argon-edge-478500-i8:us-central1:cmms-db
+- Region: us-central1
+- Frontend Bucket: gs://argon-edge-478500-i8-frontend
+
+Credenciales de Base de Datos:
+- Host: /cloudsql/argon-edge-478500-i8:us-central1:cmms-db
+- Database: cmms_prod
+- User: cmms_user
+- Password: CMMS2025Secure
+
+Última Actualización:
+- Mejoras de diseño frontend con estilo empresarial premium
+- Despliegue de frontend en Cloud Storage
+- Configuración de acceso público y CORS

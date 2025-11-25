@@ -1,0 +1,1455 @@
+IMPLEMENTACIÓN DEL CMMS CON ASISTENCIA IA PARA SOMACOR S.A
+
+NOMBRE: Lucas Adolfo Gallardo Traslaviña, Matías José Morales Alcavil
+
+CARRERA: Ingeniería en informática
+
+ASIGNATURA: Proyecto de Titulo
+
+PROFESOR: Víctor Alfonso Valenzuela Ruz
+
+FECHA: 19/11/2025
+
+Introducción
+
+Planteamiento del problema
+
+SOMACOR S.A., empresa con ya 50 años de experiencia en servicios industriales y mineros, opera en faenas de alta exigencia como “Gold Fields” – La Coipa, donde el entorno geográfico y climático genera un desgaste acelerado de maquinaria pesada. Sin embargo, el diagnóstico realizado evidencia que el proceso actual de mantenimiento presenta una brecha crítica: la gestión es mayormente reactiva y depende de documentación física (“checklists” y órdenes de trabajo en papel), lo que genera fallas en la trazabilidad, demoras operativas, poca visibilidad del estado real de los equipos y dificultades para analizar datos históricos.
+
+Esta situación afecta la continuidad operacional, incrementa los tiempos de detención no programada y perjudica la relación técnico-comercial con el cliente mandante.
+
+Motivos para la elección del tema
+
+El tema fue seleccionado debido a la necesidad real y evidente de modernizar la gestión de mantenimiento en un entorno de alta criticidad como una faena minera. Tanto operadores, técnicos como supervisores han manifestado dificultades asociadas al sistema actual, especialmente por la falta de digitalización y la dependencia de procesos manuales.
+
+Adicionalmente, SOMACOR se encuentra en un proceso de mejora continua y profesionalización de su operación, lo que hace imprescindible contar con herramientas tecnológicas que permitan decisiones basadas en datos. Esta convergencia entre necesidad operacional, oportunidad tecnológica y relevancia profesional motivó la elección del tema.
+
+Relevancia o fundamentos del trabajo
+
+El proyecto es relevante porque aborda un problema transversal en la industria minera: la falta de trazabilidad digital en la gestión de mantenimiento. En faenas remotas como La Coipa, donde condiciones extremas aceleran el desgaste de los equipos, la disponibilidad mecánica es un factor crítico para cumplir contratos, evitar penalizaciones y asegurar la continuidad productiva.
+
+Implementar un sistema digital de mantenimiento permitirá:
+
+Reducir tiempos de respuesta ante fallas.
+
+Dar visibilidad en tiempo real del estado de cada equipo.
+
+Centralizar la información histórica para análisis futuros.
+
+Estandarizar procesos y disminuir la dependencia del conocimiento individual.
+
+Preparar a la organización para evolucionar hacia mantenimiento preventivo y, a futuro, predictivo.
+
+Por su impacto estratégico, técnico y económico, el trabajo contribuye directamente a la mejora de la gestión operativa de SOMACOR.
+
+Objetivos del trabajo
+
+Diseñar e implementar un sistema de mantenimiento con trazabilidad digital que permita mejorar la disponibilidad de los equipos, optimizar la gestión de recursos y fortalecer la eficiencia operativa en la faena La Coipa de SOMACOR S.A.
+
+Objetivos específicos:
+
+Identificar y analizar las brechas del proceso de mantenimiento actual.
+
+Proponer una arquitectura tecnológica basada en herramientas no-code/low-code (“AppSheet”, “Google Sheets”, “Apps Script” y “Looker Studio”).
+
+Implementar modelo de IA con las demás tecnologias
+
+Modelar los flujos de trabajo mediante BPMN y definir roles y responsabilidades.
+
+Implementar y documentar el sistema de captura, procesamiento y visualización de datos.
+
+Definir indicadores (KPI) y métricas para evaluar el impacto de la solución.
+
+Elaborar un plan de pruebas, un plan de implementación y una hoja de ruta de mejoras.
+
+Formulación y delimitación del problema
+
+Descripción de la organización
+
+SOMACOR S.A., compañía respaldada por 50 años de servicio, pone a disposición de nuestros clientes un profundo conocimiento técnico, entregando soluciones personalizadas y con exigentes estándares de calidad en las áreas de Servicios Integrales; Aseo de Instalaciones Industriales, Aseo de Oficinas y Edificios, Vigilancia y Protección Industrial, Administración Integral de Instalaciones no Industriales, Apoyo Operacional y Obras Civiles.
+
+La empresa cuenta con una sólida estructura organizacional y vasta experiencia, que permite brindar a los clientes una operación de calidad, segura y con respeto por el medio ambiente.
+
+SOMACOR S.A. es una empresa con gran presencia en la zona norte de Chile, siendo la industria productiva y minera el mercado objetivo principal de nuestra estrategia de negocios, así como la atención en clientes de alta relevancia para la industria nacional en otros rubros como la construcción, forestal, comercio, entre otros. Entre nuestros Principales Clientes, podemos destacar:
+
+ANTECEDENTES DE LA COMPAÑÍA
+
+SOMACOR S.A. es una empresa chilena con cerca de cinco décadas de experiencia en servicios industriales y mineros, especializada en mantenimiento mecánico, operación de maquinaria y apoyo técnico en faenas de alta exigencia. A lo largo de su trayectoria, la compañía ha prestado servicios a distintos mandantes del sector minero, desarrollando capacidades operativas que abarcan desde trabajos en terreno hasta la gestión integral de equipos.
+
+En los últimos años, las faenas mineras han incrementado sus estándares de seguridad, trazabilidad y eficiencia, lo que ha generado la necesidad de modernizar los procesos tradicionales de mantenimiento. En este contexto, SOMACOR opera actualmente en la faena La Coipa (Gold Fields), donde el entorno geográfico y climático genera un desgaste acelerado de maquinaria pesada y demanda procesos de control más rigurosos.
+
+Históricamente, la gestión del mantenimiento en SOMACOR ha dependido de registros manuales en papel, lo que dificulta la trazabilidad, el análisis de datos y la planificación preventiva. Este escenario ha impulsado la búsqueda de soluciones digitales que permitan optimizar la captura de información, mejorar la coordinación operativa y asegurar un registro confiable para auditorías y toma de decisiones.
+
+Estos antecedentes justifican la necesidad de implementar un sistema digital de apoyo al mantenimiento, orientado a fortalecer la continuidad operacional y a profesionalizar la gestión del servicio prestado en faena.
+
+INFORMACIÓN CORPORATIVA
+
+Razón Social: SOMACOR S.A.
+
+RUT: 84.182.700-7
+
+Giro: Servicios Integrales
+
+Domicilio Legal: General González Balcarce 2061, Santiago
+
+Inicio de Actividades: 12 de septiembre de 1975
+
+Representante Legal: Carlos Monteverde Engelbach
+
+Página web: www.somacorchile.cl
+
+CASA MATRIZ Y SUCURSALES
+
+Ilustración : Sucursales Somacor
+
+ORGANIGRAMA CORPORATIVO
+
+SOMACOR S.A. cuenta con una estructura organizacional jerárquica y funcional que integra áreas corporativas con equipos operativos en terreno. A nivel central, la empresa está liderada por la Gerencia General y áreas administrativas que gestionan recursos, contratos y soporte interno. En cada faena, la operación es coordinada por supervisores responsables de dirigir al personal técnico y operativo, asegurando el cumplimiento de los estándares del mandante y la continuidad operacional. Esta estructura se representa de la siguiente manera:
+
+Alta Dirección:
+
+Gerente General: Es la máxima autoridad ejecutiva de la empresa. Su principal responsabilidad es la dirección estratégica general, la toma de decisiones de alto nivel y la supervisión de todas las demás gerencias. Responde por los resultados totales de la compañía (rentabilidad, crecimiento) ante los dueños o el directorio.
+
+Subgerente General: Es la "mano derecha" o el segundo al mando después del Gerente General. A menudo supervisa las operaciones diarias de las gerencias funcionales (como Operaciones, Finanzas, Ventas), permitiendo que el Gerente General se enfoque en la estrategia a largo plazo. Asume las responsabilidades del Gerente General en su ausencia.
+
+Staff y Planificación:
+
+Gerente Planificación y Desarrollo: Se enfoca en el futuro de la empresa. Lidera la creación del plan estratégico, evalúa nuevos proyectos de inversión, analiza tendencias del mercado y busca nuevas oportunidades de negocio o crecimiento.
+
+Asesor Gerencia General: Actúa como un consultor interno para el Gerente General. Proporciona consejo experto y análisis sobre temas específicos (legales, estratégicos, financieros) para ayudar en la toma de decisiones. Generalmente, no tiene personal a su cargo.
+
+Áreas Comerciales y Operativas:
+
+Gerente de Operaciones: Es el responsable del "corazón" del negocio; es decir, de la producción y entrega del producto o servicio principal. Supervisa la logística, la cadena de suministro, la producción, la calidad y la eficiencia de los procesos diarios.
+
+Gerente de Ventas: Lidera al equipo de vendedores. Su objetivo es cumplir las metas de ingresos (cuotas de venta) a través de la venta directa. Diseña estrategias de ventas, gestiona la fuerza de ventas y mantiene la relación con clientes clave.
+
+Gerente Comercial: Tiene una visión más amplia que el Gerente de Ventas. Define la estrategia comercial general, incluyendo qué mercados atacar, cómo posicionar los productos, y a menudo supervisa tanto a Ventas como a Marketing para asegurar que trabajen alineados.
+
+Subgerente Marketing: Se encarga de crear la demanda para los productos o servicios. Gestiona la marca (branding), la publicidad, las relaciones públicas, la investigación de mercado y las promociones para atraer clientes.
+
+Áreas de Soporte Corporativo:
+
+Gerente de Administración y Finanzas: Es el responsable de la salud financiera de la empresa. Supervisa la contabilidad, tesorería (pagos y cobros), presupuestos, impuestos y la planificación financiera. También suele gestionar los recursos generales (Administración).
+
+Contralor: Actúa como el auditor interno de la compañía. Su función es verificar que los números y reportes financieros sean correctos, que se cumplan las políticas internas y que los controles financieros funcionen para prevenir fraudes o errores.
+
+Subgerente Administración: Se enfoca en el funcionamiento interno y los recursos de la oficina. Gestiona los servicios generales (como aseo, seguridad), las compras de suministros, el mantenimiento de las instalaciones y el soporte administrativo.
+
+Subgerente Gestión de Personas:  Es el líder de Recursos Humanos. Se encarga de todo el ciclo de vida del empleado: reclutamiento y selección, contratación, pago de sueldos (nómina), capacitación, desarrollo profesional, cultura organizacional y relaciones laborales.
+
+Gerente de SSO: SSO significa "Salud y Seguridad Ocupacional". Este gerente es responsable de proteger la integridad física y la salud de los empleados. Se asegura de que la empresa cumpla con todas las normativas de seguridad, previene accidentes laborales y promueve una cultura de trabajo seguro.
+
+Valores Y ÉTICA Corporativa
+
+Nuestro enfoque de negocios y gobernanza busca la colaboración y beneficio mutuo con nuestras partes interesadas. Gestionamos riesgos y oportunidades y mantenemos acciones de gestión sostenible en la cadena de valor. Nuestro compromiso es dar garantía de transparencia corporativa, promover conductas éticas y demostrar la integridad de los negocios.
+
+Mantenemos código de conducta para nuestros proveedores de bienes y servicios y mantenemos auditorías constantes para evaluar su cumplimiento. Además, mantenemos un modelo de Prevención de Delitos enfocados en la transparencia, profesionalismo, monitoreo, difusión y capacitación y canales de denuncias disponibles para todas las stakeholders de SOMACOR.
+
+SOSTENIBILIDAD
+
+SOMACOR, con más de 50 años en el mercado chileno, juega un papel relevante como socio estratégico de sus clientes. Teniendo en cuenta los riesgos y las oportunidades en la evaluación de todas nuestras partes interesadas, hemos definido 8 pilares claves en materias de sostenibilidad:
+
+Seguridad y Salud Ocupacional
+
+Derechos Humanos
+
+Desempeño Social
+
+Cambio Climático
+
+Personas
+
+Agua
+
+Eficiencia Energética
+
+Residuos y Sustancias Peligrosas
+
+Planteamiento del problema
+
+A pesar de los altos estándares corporativos de SOMACOR, un diagnóstico detallado del proceso de mantenimiento de equipos en la faena La Coipa revela una brecha sistémica significativa. El modelo de gestión actual es predominantemente reactivo, fundamentado en flujos de trabajo manuales y dependientes de documentación física, como “checklist” y órdenes de trabajo en papel.
+
+Esta metodología presenta deficiencias estructurales críticas: una ausencia casi total de trazabilidad digital, una visibilidad operativa limitada y una incapacidad para agregar y analizar datos de manera sistemática. El problema trasciende la mera ineficiencia administrativa se manifiesta como una fuente tangible de pérdidas económicas, riesgos operacionales y un potencial deterioro de la confianza del cliente.
+
+La dependencia de procesos manuales genera cuellos de botella en autorizaciones, demoras en la adquisición de repuestos. Esta dependencia de personas específicas en lugar de procesos estandarizados crea puntos únicos de falla, impide la escalabilidad de las operaciones y obstaculiza la creación de un conocimiento institucionalizado. En esencia, la problemática no radica en una falla del personal, sino en la obsolescencia de un sistema que no logra capturar, procesar y transformar los datos operativos en inteligencia para la toma de decisiones.
+
+Propuesta de solución
+
+Solución Propuesta
+
+Para abordar esta problemática se propone el diseño y la implementación de un Sistema de Mantenimiento con Trazabilidad Digital junto con una IA para predecir la probabilidad de falla de activos (vehículos/equipos)
+
+La propuesta se sustenta sobre dos pilares interconectados:
+
+Pilar Metodológico: La adopción de un marco de Mantenimiento Centrado en Confiabilidad (RCM, por sus siglas en inglés). Esta metodología, estándar en la industria minera, permitirá a SOMACOR tener un enfoque proactivo, preventivo y, a futuro, predictivo, optimizando las intervenciones en función de la criticidad de cada equipo y las consecuencias de sus fallas.
+
+Pilar Tecnológico: El apalancamiento del ecosistema no-code/low-code de Google Cloud Platform y Google Workspace. Esta elección tecnológica es estratégica, ya que permite desarrollar una solución robusta, escalable e integrada utilizando una plataforma diseñada para la agilidad y el análisis de datos. Los componentes centrales serán “Google AppSheet” para la captura de datos en terreno (incluyendo operación offline), “Google Sheets” como “backend” de base de datos flexible, “Google Apps Script” como motor de automatización y flujos de trabajo, y “Looker Studio” para la inteligencia de negocios y visualización de “KPIs”. Esta pila tecnológica minimiza la necesidad de desarrollo de software tradicional, acelera drásticamente el tiempo de implementación bajo un enfoque de Producto Mínimo Viable (MVP) y se integra nativamente con herramientas de colaboración empresarial como Gmail y Google Chat.
+
+Justificación e impacto esperado
+
+Justificación
+
+La operación de SOMACOR S.A. en la faena La Coipa requiere un control preciso y oportuno del estado de la maquinaria, debido a las condiciones extremas del entorno y a las exigencias del mandante “Gold Fields”. Sin embargo, el sistema actual basado en registros manuales dificulta la trazabilidad, genera pérdida de información y limita la capacidad de planificación del mantenimiento. Estas brechas afectan directamente la disponibilidad mecánica de los equipos y los tiempos de respuesta ante fallas, lo cual se traduce en costos operacionales adicionales, riesgos para la continuidad del servicio y menor competitividad frente a otros contratistas.
+
+La digitalización del proceso de mantenimiento se justifica porque permite reemplazar los registros en papel por un sistema formal, estructurado y confiable que garantiza la captura, almacenamiento y visualización inmediata de la información. Además, facilita la gestión de los datos históricos, la toma de decisiones basada en evidencia y el cumplimiento de los estándares operacionales y de seguridad exigidos por el mandante.
+
+El proyecto resulta necesario no solo para mejorar el funcionamiento actual de SOMACOR en La Coipa, sino también para establecer una base tecnológica que permita futuras mejoras, como la estandarización de procesos, la implementación de indicadores clave de desempeño (“KPI”) y la evolución hacia estrategias de mantenimiento preventivo o predictivo. En suma, la digitalización permitirá profesionalizar la operación, reducir ineficiencias y fortalecer la capacidad de SOMACOR para sostener y ampliar sus contratos mineros.
+
+Impacto esperado
+
+La implementación de un sistema digital de trazabilidad de mantenimiento generará impactos significativos en múltiples niveles operativos y estratégicos de SOMACOR. Entre los principales beneficios esperados se encuentran:
+
+Mejora en la disponibilidad y confiabilidad de los equipos: Al contar con registros inmediatos y completos, será posible detectar patrones de fallas, intervenir antes de fallas críticas y reducir tiempos muertos asociados a diagnósticos o búsqueda de información.
+
+Mayor eficiencia operativa: La digitalización disminuirá los tiempos destinados a llenar, entregar y procesar documentos en papel. Los supervisores tendrán información en tiempo real para coordinar tareas, priorizar actividades y responder más rápido a imprevistos.
+
+Incremento en la calidad de la información: El registro digital estandarizado elimina errores de transcripción y asegura que todos los datos queden almacenados de forma uniforme, útil para análisis, informes y auditorías.
+
+Fortalecimiento del control interno y cumplimiento contractual: Al proporcionar trazabilidad total y evidencias verificables (fechas, fotos, horas trabajadas, “checklists” completados), SOMACOR podrá cumplir más fácilmente los requerimientos del mandante “Gold Fields”, mejorando su relación comercial y su reputación como proveedor.
+
+Facilita la toma de decisiones estratégicas: Con datos confiables y visualización mediante dashboards, la empresa podrá evaluar rendimiento de maquinaria, planificar compras de repuestos, optimizar turnos de trabajo y justificar inversiones en nuevos equipos.
+
+Impacto en seguridad y gestión de riesgos: La disponibilidad de registros digitales ayuda a detectar desviaciones, documentar fallas recurrentes y apoyar investigaciones de incidentes, contribuyendo a un entorno más seguro y controlado.
+
+Objetivos y Alcance del Proyecto
+
+Objetivo General
+
+El presente proyecto tiene como finalidad diseñar, implementar y validar un Sistema de Gestión de Mantenimiento Computarizado (CMMS) con un módulo de Inteligencia Artificial operativo, orientado a mejorar la trazabilidad, la eficiencia operativa y la capacidad predictiva del área de mantenimiento de SOMACOR S.A., particularmente en la operación de La Coipa (Gold Fields).
+El sistema busca superar las limitaciones de los registros manuales tradicionales y habilitar una toma de decisiones basada en datos, riesgo y evidencia cuantitativa.
+
+Objetivos Específicos
+
+Digitalizar el proceso completo de mantenimiento mediante formularios AppSheet y repositorios sincronizados en Google Sheets, asegurando trazabilidad desde la captura de datos en terreno hasta el análisis global.
+
+Integrar un modelo predictivo basado en Random Forest Classifier, entrenado con datos históricos del CMMS, para calcular probabilidad de falla, nivel de riesgo y recomendaciones prescriptivas por equipo.
+
+Desarrollar un flujo seguro de comunicación entre AppSheet, Apps Script y Cloud Run, que permita enviar datos al modelo, recibir predicciones e incorporarlas automáticamente al Maestro de Equipos.
+
+Diseñar dashboards operativos y gerenciales en Looker Studio para monitorear en tiempo real el estado de la flota, niveles de riesgo, tendencias de fallas y KPIs de mantenimiento.
+
+Estandarizar la gestión de Órdenes de Trabajo y Checklists, generando una estructura de datos consistente que permita la validación, reentrenamiento y mejora continua del modelo predictivo.
+
+Asegurar la escalabilidad técnica del sistema, contemplando un roadmap hacia Vertex AI para etapas futuras, sin comprometer la operatividad actual del CMMS.
+
+Alcance del Proyecto
+
+El alcance del proyecto incluye el diseño, implementación y validación funcional de un CMMS digital con capacidades predictivas reales. Se consideran los siguientes componentes dentro del alcance:
+
+Proceso Operativo
+
+Digitalización de checklists diarios.
+
+Registro estructurado de Órdenes de Trabajo.
+
+Seguimiento de estados del equipo (operativo / detenido / en reparación).
+
+Integración completa con el Maestro de Equipos.
+
+Arquitectura Tecnológica
+
+AppSheet para captura de datos en terreno.
+
+Google Sheets como backend estructurado.
+
+Apps Script como orquestador y middleware.
+
+Google Cloud Run para despliegue de inferencia.
+
+Google Cloud Storage para versionamiento de modelos.
+
+Inteligencia Artificial
+
+Entrenamiento y despliegue del modelo Random Forest.
+
+Predicción de probabilidad de falla.
+
+Clasificación en niveles de riesgo.
+
+Recomendaciones prescriptivas automáticas.
+
+Predicción por lote y por equipo individual.
+
+Actualización automática de dashboards con resultados.
+
+Herramientas de Visualización
+
+Creación de dashboard operativo para supervisores.
+
+Dashboard gerencial para comportamiento histórico, KPI y tendencia global.
+
+Integración con alertas visuales.
+
+Metodología utilizada
+
+El trabajo se desarrolló utilizando un enfoque MVP (Producto Mínimo Viable) que permite construir la solución de manera iterativa y validarla directamente en faena. La metodología combinó:
+
+Levantamiento de información mediante reuniones con operadores, técnicos y supervisores.
+
+Diseño de arquitectura tecnológica empleando herramientas Google no-code/low-code.
+
+Prototipado e implementación de formularios, flujos de trabajo y dashboards.
+
+Pruebas de funcionamiento en entornos simulados y con usuarios reales.
+
+Evaluación basada en KPI, considerando tiempos de respuesta, trazabilidad y eficiencia.
+
+Esta metodología permitió asegurar que la solución fuera técnica, económica y operativamente viable dentro del contexto real de SOMACOR.
+
+Detalle de las Tecnologías para implementar
+
+Arquitectura del Módulo de Inteligencia Artificial
+
+El módulo de IA está implementado como un microservicio serverless desplegado en Google Cloud Run. Este servicio contiene un contenedor Docker con el modelo Random Forest serializado mediante joblib, junto con un entorno Python (scikit-learn, numpy, pandas).
+
+El flujo operativo es el siguiente:
+
+AppSheet envía datos a Google Sheets.
+
+Apps Script extrae las 9 features del activo y genera un token OIDC.
+
+Apps Script realiza un POST seguro al endpoint del modelo en Cloud Run (/predict_asset/).
+
+El modelo procesa la solicitud y retorna:
+
+probabilidad de falla (%)
+
+nivel de riesgo (L/M/H/C)
+
+recomendación prescriptiva
+
+Apps Script escribe estos resultados en el Maestro de Equipos.
+
+Looker Studio actualiza dashboards automáticamente.
+
+El modelo se almacena y versiona en Google Cloud Storage, permitiendo actualizaciones y rollback seguros. La arquitectura es completamente desacoplada y permite escalar de forma automática sin administrar servidores.
+
+Plan de respuesta a los riesgos
+
+Identificación de riesgos
+
+A continuación, se listan algunos de los principales riesgos que pueden ralentizar el progreso del proyecto
+
+Riesgo Identificado:
+
+Adopción insuficiente del CMMS por parte de los usuarios en faena
+
+Baja calidad del data entry (inconsistencia, duplicados, registros incompletos)
+
+Fallas en operación offline o mala conectividad en faena
+
+Limitaciones de Google Sheets / Apps Script (límites de ejecución o volumen)
+
+Errores en predicciones del modelo IA (falsos positivos/negativos)
+
+Dependencia del ecosistema Google (vendor lock-in)
+
+Integraciones incorrectas entre AppSheet, Apps Script y Cloud Run
+
+Brechas de seguridad o permisos mal configurados
+
+Escalamiento futuro a Vertex AI no compatible o costoso
+
+Falta de reentrenamientos periódicos del modelo IA
+
+Estos riesgos se utilizarán para hacer la matriz de riegos, donde se clasificará el riesgo por su valorización, impactos, probabilidad y él nivel de riesgo correspondiente.
+
+Matriz de riesgos
+
+Tablas: Matriz de riesgos
+
+Junto a cada criterio, se asignan distintos niveles para la evaluación de cada uno, siendo los valores mayores para identificar los de mayor valorización, impacto y probabilidad de ocurrencia respectivamente; se le asignan colores a los distintos niveles para una mejor apreciación y contraste de sus valores. Estos son:
+
+Finalmente, en base a lo anterior se procede al desarrollo de la Matriz de riesgos:
+
+Análisis Cualitativo
+
+La siguiente tabla evalúa los aspectos cualitativos de la solución propuesta frente a un paquete de software CMMS estándar.
+
+Tabla: Análisis Comparativo Cualitativo
+
+Análisis Cuantitativo
+
+El análisis cuantitativo de los riesgos se lleva a cabo mediante los riesgos previamente identificados en el análisis cualitativo. Esto implica asignarles valores numéricos para poder tomar decisiones en situaciones de incertidumbre.
+
+Tabla: Análisis Comparativo Cualitativo
+
+Planes de respuesta
+
+1. Adopción insuficiente del CMMS por parte de los usuarios en faena
+
+Estrategia: Mitigar
+
+Acciones de respuesta:
+
+Implementar capacitación práctica y guiada dentro de la faena.
+
+Crear tutoriales simples (video corto + PDF).
+
+Incorporar feedback continuo mediante encuestas dentro de AppSheet.
+
+Ajustar interfaz con “flujo por pasos” para reducir errores.
+
+Realizar pilotos controlados de 1–2 semanas antes del despliegue total.
+
+2. Baja calidad del data entry (inconsistencia, duplicados, registros incompletos)
+
+Estrategia: Mitigar
+
+Acciones:
+
+Implementar validadores obligatorios en AppSheet (listas, formatos, rangos).
+
+Configurar reglas automáticas en Apps Script para limpieza de datos.
+
+Crear dashboards de monitoreo de calidad (Looker Studio).
+
+Definir responsable de QA de datos en cada turno.
+
+Automatizar alertas cuando se detecten registros incompletos.
+
+3. Fallas en operación offline o conectividad limitada
+
+Estrategia: Mitigar
+
+Acciones:
+
+Configurar AppSheet en modo “offline-first” para formularios críticos.
+
+Reducir peso de imágenes mediante compresión automática.
+
+Crear protocolos de sincronización manual en zonas sin señal.
+
+Proveer puntos de Wi-Fi interno en zonas estratégicas (si la faena lo permite).
+
+4. Limitaciones de Google Sheets / Apps Script (límites de ejecución o volumen)
+
+Estrategia: Mitigar
+
+Acciones:
+
+Implementar cache en Cloud Run y almacenamiento temporal en Cloud Storage.
+
+Dividir planillas en subconjuntos (paginación) si superan 10k–20k filas.
+
+Migrar a Cloud SQL en caso de crecimiento elevado.
+
+Optimizar scripts reduciendo llamadas repetitivas a la API.
+
+5. Errores en predicciones IA (falsos positivos o negativos)
+
+Estrategia: Mitigar
+
+Acciones:
+
+Programar reentrenamiento trimestral con datos actualizados.
+
+Validar los resultados con técnicos expertos antes de generar órdenes automáticas.
+
+Incluir un score de confianza para evitar acciones sobre predicciones débiles.
+
+Monitorear métricas del modelo (accuracy, recall, precision).
+
+6. Dependencia del ecosistema Google (vendor lock-in)
+
+Estrategia: Mitigar / Aceptar
+
+Acciones:
+
+Mantener arquitectura basada en contenedores (Cloud Run) para facilitar portabilidad.
+
+Documentar API y flujos para una posible migración a AWS o Azure si fuese necesario.
+
+Mantener datasets exportables vía CSV/Cloud Storage.
+
+7. Integraciones incorrectas entre AppSheet, Apps Script y Cloud Run
+
+Estrategia: Mitigar
+
+Acciones:
+
+Elaborar documentación técnica de cada endpoint.
+
+Implementar pruebas unitarias y de integración.
+
+Configurar autenticación OAuth2 y tokens de servicio.
+
+Crear logs de auditoría en Cloud Logging.
+
+8. Brechas de seguridad o permisos mal configurados
+
+Estrategia: Mitigar
+
+Acciones:
+
+Aplicar IAM basado en mínimos privilegios.
+
+Revisiones mensuales de roles y accesos.
+
+Activar autenticación OIDC en Cloud Run.
+
+Habilitar alertas de actividad sospechosa en Cloud Monitoring.
+
+9. Escalamiento futuro a Vertex AI no compatible o costoso
+
+Estrategia: Mitigar
+
+Acciones:
+
+Mantener el modelo almacenado en formato estándar (joblib / pickle).
+
+Documentar pipeline de entrenamiento y datasets.
+
+Evaluar costos comparativos entre Cloud Run vs Vertex AI Workbench.
+
+Diseñar arquitectura modular donde IA pueda reemplazarse sin afectar AppSheet.
+
+10. Falta de reentrenamientos del modelo IA
+
+Estrategia: Mitigar
+
+Acciones:
+
+Establecer calendario semestral o trimestral de reentrenamiento.
+
+Crear script automatizado para preparar dataset limpio desde el CMMS.
+
+Evaluar métricas tras cada reentrenamiento y registrar versiones del modelo.
+
+Crear dashboard de salud del modelo (drift, precisión, casos especiales).
+
+Estudio de Factibilidad
+
+Factibilidad Técnica: La viabilidad técnica es máxima. La solución se basa en servicios PaaS (Platform as a Service) y SaaS (Software as a Service) maduros de Google Cloud. El principal riesgo técnico en la faena La Coipa—la conectividad intermitente—es mitigado directamente por la tecnología seleccionada. Google AppSheet está diseñado con una arquitectura offline-first, permitiendo a los operadores y técnicos completar formularios e inspecciones sin conexión a Internet. Los datos se almacenan localmente en el dispositivo y se sincronizan de forma automática y segura con el backend de Google Sheets tan pronto como se restablece la conectividad. Esta característica hace que la pila de Google sea técnicamente más robusta y resiliente para el caso de uso de minería en terreno que las alternativas basadas en formularios web puros.
+
+Factibilidad Económica: El proyecto presenta un caso de negocio excepcionalmente favorable. A diferencia de la premisa de "costo cero" (a menudo errónea en implementaciones empresariales reales que requieren licencias premium), este análisis reconoce un costo de licenciamiento OPEX transparente y predecible para Google Workspace y Google AppSheet (plan Core o Pro). Este costo es significativamente menor que el de las licencias de Power Apps (su competidor directo)  y es una fracción del costo de adquisición de un CMMS tradicional. La inversión principal sigue siendo en horas-hombre de diseño, desarrollo e implementación. El retorno de la inversión (detallado en la Sección 7.3) se proyecta a muy corto plazo, considerando que los ahorros directos por la reducción de un solo evento de inactividad de un equipo crítico (ej. $10.6 millones de pesos para el Supersucker ) cubren con creces el costo total del proyecto, incluyendo el licenciamiento del primer año.
+
+Factibilidad Implementativa: El enfoque de Producto Mínimo Viable (MVP) mitiga los riesgos de implementación al permitir un despliegue rápido y controlado en la faena piloto. La plataforma no-code de Google AppSheet  y la naturaleza intuitiva de Looker Studio  reducen drásticamente la curva de aprendizaje y la necesidad de una gestión del cambio compleja. El proyecto responde a una necesidad expresada por el personal operativo , quienes validarán una herramienta móvil que realmente funciona en sus condiciones de trabajo (incluyendo offline), asegurando su colaboración y compromiso.
+
+Herramientas, aplicaciones, lenguajes y servicios TI
+
+La solución se construirá sobre una arquitectura de servicios en la nube de Google, minimizando la dependencia de hardware y utilizando componentes no-code/low-code para garantizar una implementación ágil, mantenible y estratégicamente escalable.
+
+Herramientas y Aplicaciones (Software):
+
+Google AppSheet: Actuará como el portal de entrada de datos en terreno (la aplicación del usuario final). Reemplaza la funcionalidad de MS Forms, pero con capacidades superiores. Proporcionará interfaces de aplicación móvil personalizadas, accesibles en dispositivos iOS y Android, optimizadas para la captura de datos estructurados (“checklists”, reportes) y enriquecidos (captura de fotos, firmas, escaneo de códigos QR y geolocalización GPS). Su capacidad offline es el pilar de la factibilidad técnica en la faena.
+
+Google Sheets: Será el núcleo de la solución, funcionando como el backend de base de datos no-code. Reemplaza a SharePoint Online Lists. Se utilizarán Hojas de Cálculo estructuradas (actuando como tablas) para almacenar de forma centralizada toda la información (maestro de equipos, OTs, “checklists”, historial de fallas), convirtiéndose en la "única fuente de la verdad" del sistema.
+
+Google Apps Script: Será el motor de automatización y el "sistema nervioso digital" que orquestará los flujos de trabajo. Reemplaza a Power Automate. Utilizando disparadores (triggers) basados en eventos (ej. onEdit o onFormSubmit en una Google Sheet ), Apps Script ejecutará la lógica de negocio, enviará notificaciones en tiempo real (vía Gmail o Google Chat), procesará aprobaciones y moverá datos entre las hojas de cálculo sin intervención manual.
+
+Looker Studio (anteriormente Google Data Studio): Como la herramienta de inteligencia de negocio para la visualización de datos. Reemplaza a Power BI. Se conectará de forma nativa a las Hojas de Google Sheets  para crear dashboards interactivos y monitorear en tiempo real los KPIs definidos.
+
+Lenguajes:
+
+JavaScript: La lógica de negocio avanzada y la automatización se implementarán utilizando Google Apps Script, que se basa en JavaScript moderno, un lenguaje ampliamente conocido y accesible.
+
+Expresiones No-Code: Para la lógica dentro de la aplicación (ej. validaciones de formularios, visibilidad condicional), se utilizarán las expresiones de Google AppSheet, que son similares a las fórmulas de las hojas de cálculo.
+
+Componentes de Hardware:
+
+Dispositivos de Usuario Final: No se requiere hardware especializado. La solución funcionará en:
+
+Smartphones o Tablets (iOS/Android): Para operadores y técnicos en terreno. Deberán contar con la aplicación Google AppSheet instalada.
+
+Computadores de Escritorio o Laptops: Para supervisores y personal de logística, accediendo a Google Sheets, Gmail y Looker Studio a través de un navegador web.
+
+Infraestructura de Servidores: No aplica. Toda la infraestructura de cómputo, almacenamiento y bases de datos es gestionada por Google como parte de los servicios en la nube de Google Workspace y Google Cloud Platform.
+
+Servicios TI Requeridos:
+
+Suscripción a Google Workspace: El servicio fundamental que proporciona las cuentas de usuario, Google Drive, Google Sheets, Gmail y Google Chat.
+
+Suscripción a Google AppSheet: Se requerirán licencias del plan "Core" o "Pro" para los usuarios que necesiten interactuar con la aplicación y ejecutar automatizaciones.
+
+Conectividad a Internet: Se requiere una conexión a internet confiable en la faena (Wi-Fi o datos móviles 4G/5G) para la sincronización de datos. La captura de datos está protegida por el modo offline de AppSheet.
+
+Justificación Estratégica de la Plataforma Google
+
+La selección del ecosistema Google como base tecnológica para el desarrollo del CMMS con capacidades de inteligencia artificial responde a una evaluación estratégica que considera aspectos operativos, económicos, escalables y de adopción organizacional. Esta decisión se justifica por la alineación natural entre las necesidades reales de SOMACOR y las capacidades nativas del entorno Google Workspace, AppSheet, Apps Script y los servicios de Google Cloud Platform.
+
+En primer lugar, el uso de Google Workspace permite aprovechar una infraestructura ya adoptada por la organización, eliminando costos adicionales en licenciamiento, soporte y capacitación. Los usuarios se encuentran familiarizados con Gmail, Drive, Sheets y Google Chat, lo que reduce significativamente la resistencia al cambio y acelera la adopción del nuevo CMMS. Esta integración nativa promueve un flujo de trabajo continuo donde la comunicación, el registro de información y el seguimiento de actividades conviven dentro de un mismo ecosistema.
+
+En términos operativos, AppSheet representa una ventaja competitiva significativa al permitir el desarrollo de aplicaciones móviles sin código, con soporte para operación offline, captura de fotografías, geolocalización, lectura de códigos QR y formularios dinámicos. Estas capacidades son críticas en ambientes de faena, donde la conectividad es intermitente y la captura de datos en terreno debe ser rápida, confiable y resistente a fallas. La flexibilidad de AppSheet permite ajustes iterativos sin depender de terceros, habilitando un enfoque ágil basado en MVP (Minimum Viable Product) que reduce tiempos de implementación.
+
+Desde una perspectiva de integración y automatización, Apps Script y Google Sheets operan como una capa lógica que facilita la orquestación de flujos de trabajo, validación de datos, generación de reportes y conexión entre múltiples sistemas. Esta arquitectura modular disminuye costos y permite que el sistema se adapte progresivamente a medida que se documentan nuevas necesidades operacionales.
+
+La incorporación de servicios avanzados de Google Cloud Platform —particularmente Cloud Run, Cloud Storage y la posibilidad futura de integración con Vertex AI— permite implementar un modelo de machine learning propio que predice fallas, calcula niveles de riesgo y entrega recomendaciones automáticas. Gracias a Cloud Run, el modelo puede ejecutarse en contenedores altamente escalables, con costeo por demanda y sin requerir infraestructura dedicada. Esto posiciona al proyecto en una ruta tecnológica moderna, escalable y compatible con prácticas de la industria 4.0.
+
+Finalmente, la estrategia de utilizar la plataforma Google permite equilibrar costo, flexibilidad y escalabilidad, evitando dependencias rígidas asociadas a CMMS tradicionales. La arquitectura propuesta permite mejoras continuas, rápida evolución y capacidad de integrar nuevos servicios sin reconstruir el sistema desde cero. Esta decisión tecnológica no solo satisface los requerimientos actuales de SOMACOR, sino que también garantiza una base sólida para el crecimiento futuro y la adopción de herramientas avanzadas de análisis predictivo y automatización.
+
+Detalle de la Arquitectura para implementar
+
+Esta sección aborda la implementación de la arquitectura de la solución, Se ha puesto especial énfasis en la adopción de notaciones y herramientas estándar de la industria para el modelado, con el fin de garantizar la claridad, precisión y profesionalismo de la documentación técnica.
+
+Diagrama BPMN de los Procesos de Negocio
+
+Se modelarán tres procesos de negocio principales utilizando la notación BPMN (Business Process Model and Notation) para visualizar de manera clara y estandarizada los flujos de trabajo rediseñados, los roles involucrados (en carriles o swimlanes) y las interacciones con el sistema además de agregar “fases” a los diagramas
+
+Estos nuevos diagramas proporcionan una visualización clara, estandarizada e inequívoca de los flujos de trabajo rediseñados, listos para su validación e implementación.
+
+Diagramas de caso de uso
+
+El diagrama de casos de uso permite identificar y representar de manera clara las interacciones que los distintos tipos de usuarios tendrán con el CMMS diseñado para SOMACOR.
+
+El siguiente diagrama define y representa a los actores y sus interacciones con el sistema
+
+Actores:
+
+Operador: Usuario de equipos en terreno.
+
+Técnico de Mantenimiento: Personal que ejecuta las reparaciones.
+
+Supervisor: Rol de gestión, planificación y validación en faena.
+
+Logística: Rol de gestión de adquisiciones y bodega.
+
+Gerencia: Rol de análisis estratégico y monitoreo de KPIs.
+
+Casos de Uso Principales:
+
+Registrar Inspección Diaria (Vinculado a: Operador):
+
+<<Include>> Registrar Hallazgos (Fallas).
+
+<<Include>> Capturar Evidencia Fotográfica.
+
+Gestionar Orden de Trabajo (OT) (Vinculado a: Supervisor, Técnico):
+
+<<Include>> Crear/Asignar OT.
+
+<<Include>> Validar/Cerrar OT.
+
+Ejecutar Intervención Técnica (Vinculado a: Técnico):
+
+<<Extend>> Solicitar Repuestos (Este caso de uso es opcional y solo ocurre si se necesitan repuestos durante la intervención).
+
+Gestionar Solicitud de Repuestos (Vinculado a: Supervisor, Logística):
+
+<<Include>> Aprobar/Rechazar Solicitud.
+
+<<Include>> Procesar Compra de Repuesto.
+
+Consultar KPIs de Mantenimiento (Vinculado a: Gerencia, Supervisor):
+
+<<Include>> Analizar Historial de Fallas.
+
+(Este caso de uso representa la interacción con los dashboards de Looker Studio).
+
+Diagrama de componentes
+
+El diagrama de infraestructura tiene como propósito mostrar la forma en que los distintos elementos tecnológicos se distribuyen dentro del entorno cloud y cómo se conectan a través de la red, las interacciones entre plataformas y la relación entre usuarios, frontend, backend y servicios externos.
+
+El sistema se compone de cuatro componentes lógicos principales que interactúan de forma cohesiva dentro de la plataforma Google Cloud:
+
+Componente [InterfazUsuario] (AppSheet):
+
+Implementación: Google AppSheet.
+
+Función: Este componente provee las interfaces de usuario (la aplicación móvil) para la entrada de datos en terreno. Es responsable de la captura de datos enriquecidos (formularios, fotos, GPS) y, crucialmente, de gestionar la persistencia offline y la sincronización automática de datos.
+
+Interfaces Expuestas: submitChecklist(), submitInterventionReport(), requestSparePart().
+
+Dependencias: Depende del componente `` (Google Sheets) para la sincronización de datos.
+
+Componente `` (Google Sheets):
+
+Implementación: Google Sheets (dentro de Google Drive).
+
+Función: Actúa como la base de datos no-code centralizada, persistente y segura del sistema. Almacena todos los datos maestros y transaccionales (Equipos, OTs, “checklists”, Repuestos) en Hojas de Cálculo estructuradas. Es la "única fuente de la verdad".
+
+Interfaces Expuestas: createRow(), updateRow(), queryData().
+
+Dependencias: Ninguna. Es el componente base de almacenamiento.
+
+Componente [MotorFlujos] (Apps Script):
+
+Implementación: Google Apps Script.
+
+Función: Contiene toda la lógica de negocio del sistema y la orquestación de procesos. Se suscribe a eventos en el `` (ej. onEdit trigger ) y ejecuta secuencias de acciones (crear registros, enviar notificaciones vía Gmail/Chat, iniciar aprobaciones). Es el cerebro que conecta y automatiza el proceso.
+
+Interfaces Expuestas: No expone interfaces directas; actúa en respuesta a disparadores (triggers).
+
+Dependencias: Depende de `` (para leer/escribir datos) y de servicios externos de Google Workspace (Gmail, Chat) para notificaciones.
+
+Componente `` (Looker Studio):
+
+Implementación: Google Looker Studio.
+
+Función: Extrae datos del repositorio, los transforma, los modela y los presenta en dashboards interactivos y reportes analíticos (KPIs) para la toma de decisiones gerenciales.
+
+Interfaces Expuestas: Provee interfaces de visualización web (dashboards).
+
+Dependencias: Depende de `` (Google Sheets) como su fuente de datos principal.
+
+Modelo de datos y Diccionario de Datos
+
+El modelo de datos constituye la base del funcionamiento del CMMS, por lo que es importante contextualizarlo antes de presentar el diagrama correspondiente.
+En esta sección se describe cómo se organizan las entidades clave del sistema
+
+A continuación, se representa el diagrama para entender y comprender de mejor manera la estructura lógica del sistema
+
+Modelo Entidad-Relación
+
+Diccionario de Datos Detallado
+
+A continuación, se detallan las tablas junto con sus campos y atributos además de incorporar una descripción sobre el campo
+
+1) Tabla: Equipos
+
+2) Tabla: Ordenes_Trabajo (OT)
+
+3) Tabla: Actividad_Orden_Trabajo
+
+4) Tablas Check List (templates / items / categories / instance / answer / imagen)
+
+4.1) Check_List_Template
+
+4.2) Check_List_Categoria
+
+4.3) Check_List_Item
+
+4.4) Check_List_Instance (instancia completada)
+
+4.5) Check_List_Answer
+
+4.6) Check_List_Imagen
+
+5) Tabla: Planes_Mantenimiento
+
+6) Tabla: Detalles_Plan_Mantenimiento
+
+7) Tabla: Tarea_Estandar y Tipo_Tarea
+
+8) Tabla: Faenas
+
+9) Tabla: Tipo_Equipo
+
+10) Tabla: Estado_Equipo
+
+11) Tabla: Estado_Orden_Trabajo
+
+12) Tabla: Tipo_Mantenimiento_Ot
+
+13) Tablas Usuarios / Roles / Auth_User
+
+Auth_User (tabla de autenticación / identidad)
+
+Usuario
+
+Roles
+
+14) Tabla: Evidencia_Ot
+
+15) Tabla: Agendas
+
+16) Tabla: Solicitudes_Repuestos (y Repuestos_Utilizados)
+
+Topología de comunicaciones
+
+La topología de la solución es un modelo cliente-servidor distribuido, basado 100% en la nube de Google, lo que garantiza alta disponibilidad, accesibilidad global y seguridad.
+
+Clientes (Endpoints): Dispositivos de los usuarios finales (smartphones, tablets, PCs) ubicados en la faena La Coipa o en oficinas corporativas.
+
+Red de Acceso: Los clientes se conectan a través de la red de internet disponible en la faena (Wi-Fi, 4G/5G) o en las oficinas. Toda la comunicación entre el cliente y la nube está encriptada de extremo a extremo mediante el protocolo $HTTPS$, asegurando la confidencialidad e integridad de los datos en tránsito.
+
+Nube de Google (Servidor): El tráfico de los clientes se dirige a los centros de datos globales de Google Cloud Platform (GCP) y Google Workspace. Todos los componentes de la solución (AppSheet, Google Sheets, Apps Script, Looker Studio) residen y se comunican entre sí dentro de la red troncal segura y de alta velocidad de Google.
+
+Flujo de Datos (Modo Offline): Una característica clave de esta topología es el modo offline de AppSheet. Si la Red de Acceso falla en la faena, el Cliente (smartphone) continúa operando localmente. Los datos se almacenan en el dispositivo y se sincronizan con la Nube de Google (específicamente Google Sheets) automáticamente cuando se restablece la conexión.
+
+La simulación en Cisco Packet Tracer (mencionada en ) sigue siendo válida conceptualmente, pero el servidor "Server-PT Microsoft 365 Cloud" debe ser reemplazado por "Server-PT Google Cloud Platform".
+
+Diagrama de Infraestructura
+
+Acción de Corrección: Se proporciona una explicación detallada de la infraestructura, que es gestionada enteramente por Google bajo un modelo de Plataforma como Servicio (PaaS) y Software como Servicio (SaaS). Esto abstrae toda la complejidad de la gestión de hardware para SOMACOR, permitiendo que el equipo de TI se enfoque en el valor de negocio.
+
+La infraestructura se divide en las siguientes capas:
+
+Capa de Usuario (Gestionada por SOMACOR):
+
+Hardware: PCs, Laptops, Smartphones, Tablets.
+
+Software: Navegador web actualizado (para Sheets, Looker Studio), Aplicación Google AppSheet instalada en dispositivos móviles.
+
+Capa de Conectividad (Gestionada por Proveedores de Telecomunicaciones):
+
+Internet (Fibra Óptica, Conexión Satelital, Red Celular 4G/5G).
+
+Capa de Nube (Gestionada por Google):
+
+Infraestructura como Servicio (IaaS): Servidores físicos, almacenamiento, switches, routers distribuidos en centros de datos globales de Google, con redundancia geográfica para recuperación de desastres. SOMACOR no tiene acceso ni responsabilidad sobre esta capa.
+
+Plataforma como Servicio (PaaS) / Software como Servicio (SaaS): Sobre la infraestructura de Google corren los servicios de Google Workspace (Sheets, Drive, Gmail) y Google Cloud (AppSheet, Apps Script, Looker Studio). Google gestiona el balanceo de carga, la aplicación de parches de seguridad, el mantenimiento y la escalabilidad de forma automática.
+
+En resumen, SOMACOR no necesita adquirir, configurar, parchear ni mantener ningún servidor físico o virtual para esta solución. La "infraestructura" del proyecto se reduce a las suscripciones de licenciamiento de Google Workspace y Google AppSheet, y a los dispositivos de los usuarios finales.
+
+Diagrama de Arquitectura de la Solución
+
+Acción de Corrección: Se reemplaza la arquitectura original por un modelo claro de cuatro capas lógicas basado en la pila de Google, explicando detalladamente el flujo de datos.
+
+El diagrama de arquitectura ilustra el flujo de datos a través de un modelo de cuatro capas lógicas, que trabajan en conjunto para entregar la solución completa de forma integrada y eficiente:
+
+Capa de Presentación / Captura (Usuario Final):
+
+Componentes: Aplicación móvil nativa (iOS/Android) y vistas de navegador web.
+
+Tecnología: Google AppSheet.
+
+Flujo: Los usuarios (Operadores, Técnicos) interactúan con la aplicación de AppSheet en sus dispositivos. Los formularios de checklist e intervención están diseñados para ser intuitivos y permitir la captura de datos enriquecidos (fotos, GPS). Esta capa gestiona la operación offline, guardando los datos localmente si no hay conexión.
+
+Capa de Datos (Repositorio Central):
+
+Componentes: Hojas de Cálculo estructuradas (tablas) y almacenamiento de archivos.
+
+Tecnología: Google Sheets y Google Drive.
+
+Flujo: Cuando el dispositivo del usuario recupera la conectividad, la capa de presentación (AppSheet) sincroniza automáticamente los datos capturados con la capa de datos. Los datos estructurados (ej. estado del checklist, horómetro) se escriben como nuevas filas en las Hojas de Google Sheets. Los datos no estructurados (ej. fotos de evidencia) se guardan en Google Drive, y el enlace a la foto se almacena en la fila correspondiente de Google Sheets. Esta capa es la "única fuente de la verdad".
+
+Capa de Automatización y Lógica de Negocio (Flujos):
+
+Componentes: Disparadores (Triggers) basados en eventos y funciones de script.
+
+Tecnología: Google Apps Script.
+
+Flujo: Esta capa "escucha" los cambios en la capa de datos. Un trigger (ej. onEdit o onFormSubmit) se activa en Google Sheets cuando AppSheet sincroniza una nueva fila. El script de Apps Script se ejecuta, lee la nueva fila, aplica reglas de negocio (ej. "evaluar si la falla es crítica"), actualiza otras Hojas de Cálculo (ej. crear una OT automática) y envía notificaciones (vía Gmail o Google Chat) a los Supervisores o Logística.
+
+Capa de Visualización e Inteligencia (Análisis):
+
+Componentes: Dashboards y reportes interactivos.
+
+Tecnología: Looker Studio.
+
+Flujo: Looker Studio se conecta de forma segura y programada (o en tiempo real) a la capa de datos (Google Sheets). Extrae, transforma y visualiza la información en dashboards consolidados. Ofrece a los gestores una vista en tiempo real del estado de la flota, el cumplimiento de “checklists” y el monitoreo de KPIs (ej. MTTR, ratio Preventivo vs. Correctivo).
+
+Esta arquitectura no solo resuelve el problema de la trazabilidad, sino que crea un activo de datos histórico, robusto y centralizado. La acumulación de datos detallados en Google Sheets crea, en efecto, un "gemelo digital" del proceso de mantenimiento, habilitando la transición futura hacia el mantenimiento predictivo basado en el ecosistema de IA de Google Cloud.
+
+Implementación de los KPI y SLA
+
+Para medir la efectividad de la nueva solución y garantizar la agilidad de los procesos digitalizados, se implementará un conjunto de Indicadores Clave de Rendimiento (KPI) y Acuerdos de Nivel de Servicio (SLA) internos. Estos se monitorearán utilizando los datos recopilados en Google Sheets y visualizados en Looker Studio.
+
+Descripción de KPI (SMART)
+
+Los KPIs se diseñaron bajo el marco SMART para asegurar que sean relevantes, medibles y directamente vinculados a la resolución de los problemas cuantificados en el diagnóstico. El monitoreo se realizará a través de Looker Studio, que consultará los datos de timestamps y estados en Google Sheets.
+
+KPI 1: Reducción del Tiempo Medio de Reparación (MTTR)
+
+Específico: Reducir el tiempo promedio, medido en horas, transcurrido desde que se genera una orden de trabajo (fila creada en OrdenesTrabajo) hasta que esta es cerrada (campo id_estado_fk actualizado a "Cerrada").
+
+Medible: En horas/días. La línea base es una duración promedio de 15 días.
+
+Alcanzable: Objetivo: reducción del 30% en los primeros 6 meses, y del 50% en el primer año.
+
+Relevante: Ataca directamente el problema de los largos períodos de inactividad, la principal fuente de pérdidas económicas.
+
+Limitado en el tiempo: A alcanzar en los primeros 6 meses post-implementación.
+
+KPI 2: Disminución de Costos por Inactividad
+
+Específico: Reducir las pérdidas económicas totales proyectadas, derivadas de detenciones de equipos (costo de inactividad + multas contractuales).
+
+Medible: La línea base son las pérdidas estimadas por evento (ej. $10.657.500 para el Supersucker).
+
+Alcanzable: Objetivo: reducción del 25% en el primer año.
+
+Relevante: Mide el ROI directo del proyecto y su contribución a la rentabilidad.
+
+Limitado en el tiempo: A alcanzar en el primer año de operación.
+
+KPI 3: Tasa de Cumplimiento de Inspecciones Diarias
+
+Específico: Asegurar que el 100% de los equipos que inician un turno operativo cuenten con un registro de checklist en Google Sheets (enviado desde AppSheet) para ese día.
+
+Medible: Como un porcentaje (registros en “checklists” / equipos operativos programados).
+
+Alcanzable: Objetivo: alcanzar y mantener una tasa de cumplimiento superior al 98%.
+
+Relevante: Garantiza la adopción de la herramienta, la calidad de los datos de entrada y el cumplimiento de los protocolos de seguridad.
+
+Limitado en el tiempo: A alcanzar a partir del segundo mes de implementación.
+
+KPI 4: Optimización del Ratio de Mantenimiento Preventivo vs. Correctivo
+
+Específico: Aumentar la proporción de órdenes de trabajo (filas en OrdenesTrabajo) generadas de forma planificada (campo id_tipo_mant_fk = 'Preventivo') frente a las generadas por fallas imprevistas ('Correctivo').
+
+Medible: Como un ratio (ej. 70/30). La línea base es "predominantemente reactivo" (ej. 20/80).
+
+Alcanzable: Objetivo: alcanzar un ratio de 70% de OTs preventivas y 30% de OTs correctivas.
+
+Relevante: Es el principal indicador del cambio cultural hacia un enfoque proactivo (RCM).
+
+Limitado en el tiempo: A alcanzar en un plazo de 12 meses.
+
+Descripción de SLA
+
+Los SLAs serán acuerdos operativos internos diseñados para garantizar la agilidad de los nuevos flujos de trabajo, eliminando formalmente los cuellos de botella. Estos SLAs serán ejecutados y monitoreados por Google Apps Script.
+
+SLA 1: Tiempo de Notificación de Falla Crítica
+
+Acuerdo: Todas las fallas clasificadas como "Rojas" o críticas en un checklist enviado desde AppSheet deben generar una notificación automática (vía Gmail y Google Chat) al supervisor de mantenimiento en un tiempo máximo de 5 minutos desde la sincronización del dato en Google Sheets.
+
+Resultado esperado: Conciencia situacional inmediata para la supervisión, eliminando la latencia del papel.
+
+Implementación: Un trigger onEdit en Google Sheets activará la función de Apps Script enviarAlertaCritica().
+
+SLA 2: Tiempo de Creación y Asignación de Orden de Trabajo
+
+Acuerdo: Para cualquier falla crítica notificada (SLA 1), una Orden de Trabajo (nueva fila en la Hoja OrdenesTrabajo) debe ser creada en el sistema y asignada a un técnico en un plazo máximo de 1 hora.
+
+Resultado esperado: Formalización y movilización inmediata de recursos técnicos, reduciendo el tiempo muerto inicial.
+
+Implementación: El Supervisor creará la OT en una vista de AppSheet o directamente en Google Sheets.
+
+SLA 3: Tiempo de Aprobación de Compra de Repuestos Críticos
+
+Acuerdo: El ciclo completo de autorización para la compra de un repuesto crítico (creado desde AppSheet) debe completarse en un plazo máximo de 4 horas hábiles desde que Logística carga las cotizaciones.
+
+Resultado esperado: Eliminación de las demoras burocráticas en la adquisición de piezas, una causa raíz de las detenciones prolongadas.
+
+Implementación: El flujo de aprobación será gestionado por Apps Script, enviando correos accionables de Gmail a los aprobadores.
+
+Plan de Pruebas y Aseguramiento de Calidad
+
+Se presenta un plan formal de Pruebas y Aseguramiento de Calidad (QA) que garantiza que la solución sea robusta, confiable y cumpla con los requisitos del negocio en el entorno de Google Cloud.
+
+Plan de Pruebas
+
+El plan de pruebas se estructura formalmente para cubrir todo el ciclo de vida del desarrollo, desde los componentes individuales hasta la validación del usuario final.
+
+Estructura del Plan de Pruebas:
+
+Introducción y Objetivos: Validar que la solución de Google (AppSheet, Sheets, Apps Script, Looker Studio) cumple con todos los requisitos funcionales y no funcionales, y mitiga los problemas del proceso manual.
+
+Alcance:
+
+En Alcance: Pruebas unitarias, de integración, de capacidad offline, de concurrencia y de aceptación de usuario (UAT).
+
+Fuera de Alcance: Pruebas de carga a gran escala (más allá de las pruebas de concurrencia)
+
+Recursos y Roles: Equipo de Proyecto (Desarrollador, Jefe de Proyecto) y Equipo Piloto de SMEs (Supervisor, Técnico, Operador).
+
+Entorno de Pruebas: Se creará un entorno de UAT dedicado, que consiste en una copia de la aplicación de AppSheet y copias de las Hojas de Google Sheets de backend, para evitar la contaminación de los datos de producción.
+
+Herramientas de Prueba: Google AppSheet (para ejecución), Google Sheets (para validación de datos), Google Chat (para registro de incidentes).
+
+Entregables: Casos de prueba documentados, registro de defectos (Bug Log) y el Acta de Aceptación de Usuario (Sign-Off).
+
+Estrategia y Tipos de Pruebas
+
+Se ejecutará una estrategia de pruebas multifásica:
+
+Fase 1: Pruebas Unitarias
+
+Objetivo: Verificar que cada componente de Google funcione correctamente de forma aislada.
+
+Detalle:
+
+Google AppSheet: Probar validaciones de campos (ej. horómetro solo acepta números), campos obligatorios, lógica de visibilidad condicional (mostrar preguntas de falla solo si estado_falla = TRUE), y correcta visualización en diferentes tamaños de pantalla móvil.
+
+Google Apps Script: Probar cada función de automatización de forma aislada (ej. enviarAlertaCritica(), crearOTAutomatica()) usando datos de entrada simulados (mock) para verificar que la lógica condicional es correcta.
+
+Google Sheets: Verificar la correcta creación de columnas, tipos de datos y validaciones de datos en las celdas.
+
+Looker Studio: Probar la conexión de datos a Google Sheets y la precisión de los cálculos de las métricas (ej. que el cálculo del MTTR sea correcto).
+
+Fase 2: Pruebas de Integración (End-to-End)
+
+Objetivo: Asegurar que todos los componentes interactúen correctamente, simulando los flujos de trabajo completos.
+
+Escenarios Detallados:
+
+Escenario "Falla Crítica de Extremo a Extremo":
+
+Acción: Un usuario de prueba (simulando un Operador) llenará un checklist en AppSheet reportando una falla grave.
+
+Verificación: El equipo debe verificar que: a) el dato se sincronice y guarde correctamente en Google Sheets; b) el trigger de Apps Script se active y envíe la alerta al Supervisor correcto vía Google Chat y Gmail (cumpliendo el SLA 1 de < 5 min); c) el dashboard de Looker Studio refleje el nuevo estado "Rojo" del equipo en el siguiente ciclo de refresco.
+
+Escenario "Ciclo de OT Completo con Repuestos":
+
+Acción: Se simulará la creación de una OT, la asignación, la ejecución, la solicitud de un repuesto desde AppSheet, el flujo completo de aprobación por Gmail, la recepción del repuesto, el registro final de la intervención y el cierre por parte del supervisor.
+
+Verificación: Se validará que los cambios de estado y las notificaciones funcionen en cada paso.
+
+Fase 3: Pruebas Especiales (Capacidad Offline y Concurrencia)
+
+Objetivo: Probar los límites de la solución en condiciones adversas.
+
+Escenarios Detallados:
+
+Prueba de Capacidad Offline (Crítica):
+
+Acción: Un usuario de prueba en un dispositivo móvil activará el "modo avión". Completará cinco “checklists” y dos reportes de intervención en AppSheet (incluyendo la captura de fotos). Apagará y reiniciará el dispositivo (aún en modo avión) y verificará que los datos persistan localmente. Finalmente, desactivará el modo avión.
+
+Verificación: Se debe confirmar que los siete registros (y sus fotos asociadas en Google Drive) se sincronicen automáticamente con Google Sheets en el orden correcto y sin pérdida de datos.
+
+Prueba de Concurrencia:
+
+Acción: 10 usuarios de prueba (simulados) enviarán “checklists” desde AppSheet simultáneamente al mismo backend de Google Sheets.
+
+Verificación: Se debe asegurar que no ocurran bloqueos de escritura, sobrescritura de datos o fallos en la ejecución de los triggers de Apps Script debido a la alta concurrencia.
+
+Plan de Pruebas de Aceptación de Usuario (UAT)
+
+Acción de Corrección: Se detalla un plan de UAT, que es la fase para validar el valor de negocio y asegurar la adopción.
+
+Metodología: Se seleccionará un grupo piloto de usuarios clave en la faena La Coipa (2 Operadores, 2 Técnicos, 1 Supervisor). Se les proporcionará capacitación práctica y se les pedirá que utilicen exclusivamente el nuevo sistema en sus dispositivos móviles durante sus jornadas laborales por un período de una a dos semanas.
+
+Prerrequisitos:
+
+El entorno de UAT (copia de la app y las hojas de cálculo) debe estar funcional y poblado con datos de prueba realistas (equipos reales de La Coipa).
+
+Las Pruebas de Integración (Fase 2) deben estar completadas y sin bugs críticos abiertos.
+
+Los participantes de la UAT deben haber completado la sesión de capacitación.
+
+Criterios de Aceptación:
+
+El éxito de la UAT se medirá contra criterios de negocio claros, no solo técnicos.
+
+Ejemplo de Criterio 1: "El 100% de los “checklists” diarios del equipo piloto deben ser registrados exitosamente a través de AppSheet, incluyendo el modo offline."
+
+Ejemplo de Criterio 2: "El tiempo percibido por el Operador para completar el checklist digital debe ser igual o menor que el tiempo del formulario en papel."
+
+Ejemplo de Criterio 3: "El Supervisor debe poder crear y asignar una OT en menos de 5 minutos desde la notificación de la falla."
+
+Procedimiento de Cierre y Sign-Off :
+
+El feedback se recogerá en sesiones diarias de 15 minutos y se registrará en un log de incidentes/mejoras.
+
+Los problemas bloqueantes se resolverán y se volverán a probar dentro del período de UAT.
+
+La fase no concluirá hasta que el Supervisor de Mantenimiento (SME) y un representante de los Operadores firmen formalmente el Acta de Aceptación de Usuario, declarando que la solución es apta para el propósito y resuelve los problemas del sistema manual.
+
+Normas y Estándares
+
+Acción de Corrección: Se describe cómo el diseño y la implementación de la solución de Google refuerzan el cumplimiento de las normas que SOMACOR ya posee , y de los estándares de la industria.
+
+ISO 9001 (Gestión de Calidad) e ISO 90003 (QA de Software):
+
+ISO 9001 es el estándar general de Gestión de Calidad (QMS). ISO 90003 es la guía específica que interpreta y aplica los principios de ISO 9001 al desarrollo, adquisición y mantenimiento de software.54 La implementación de nuestra solución cumple con estos estándares de las siguientes maneras:
+
+Estandarización de Procesos y Control de Documentos (Cláusulas ISO 9001: 7.5 y 8.1):
+
+Implementación: El proceso manual (dependiente del "conocimiento individual") se reemplaza por flujos de trabajo estandarizados y codificados en Google Apps Script. Cada ejecución es idéntica, asegurando la consistencia del proceso. Todos los registros (“checklists”, OTs) se almacenan centralizadamente en Google Sheets y los documentos de soporte en Google Drive, que proporcionan control de versiones y un historial de auditoría completo, cumpliendo con los requisitos de control de documentos y registros.
+
+Toma de Decisiones Basada en Evidencia (Cláusula ISO 9001: 9.1.3):
+
+Implementación: El sistema manual impide el análisis. La nueva solución captura datos estructurados que se visualizan en Looker Studio. La gerencia ahora puede tomar decisiones (ej. ajustar planes de mantenimiento) basándose en datos objetivos y en tiempo real (KPIs), en lugar de intuición.
+
+Mejora Continua (Cláusula ISO 9001: 10.3):
+
+Implementación: El Plan de Pruebas, el análisis de KPIs en Looker Studio y el Plan de Control de Cambios crean un ciclo formal de Planificar-Hacer-Verificar-Actuar (PDCA). El análisis del historial de fallas en Google Sheets es la base para el análisis de causa raíz y la implementación de mejoras preventivas.
+
+ISO 45001 (Seguridad y Salud en el Trabajo):
+
+Implementación: El sistema contribuye directamente a la gestión de la seguridad. La obligatoriedad del checklist diario en AppSheet antes de operar un equipo actúa como un mecanismo proactivo de identificación de peligros. Si un Operador reporta una falla de seguridad crítica (ej. "frenos defectuosos"), el SLA 1 (impulsado por Apps Script) notifica inmediatamente al Supervisor, permitiendo la detención del equipo antes de que ocurra un accidente.
+
+ISO 14001 (Gestión Ambiental):
+
+Implementación: El proyecto tiene un impacto ambiental positivo y cuantificable al eliminar el consumo de papel.
+
+Mantenimiento Centrado en Confiabilidad (RCM):
+
+Implementación: RCM es una metodología que depende fundamentalmente de la recopilación de datos de alta calidad sobre el historial de fallas de los activos. El sistema propuesto (AppSheet/Sheets) es la herramienta habilitadora que captura esta información. Sin los datos que este proyecto generará, la implementación de una estrategia RCM es imposible. La solución es el cimiento sobre el cual se construirá la futura optimización del mantenimiento.
+
+Plan de Implementación
+
+Este plan detalla la estrategia para el despliegue de la solución, su mantenimiento y la gestión de la continuidad del negocio, asegurando una transición fluida del proceso manual al digital y mitigando los riesgos operativos inherentes a una faena remota.
+
+Gestión de Disponibilidad
+
+La estrategia de disponibilidad se centra en la robustez de la plataforma en la nube de Google y en la mitigación específica de los problemas de conectividad en La Coipa.
+
+Disponibilidad de la Infraestructura Cloud: La solución se beneficia de la alta disponibilidad y la redundancia geográfica global de la infraestructura de Google Cloud Platform y Google Workspace. Esto elimina el riesgo de caídas del sistema por fallas de hardware, energía o red gestionados por SOMACOR.
+
+Disponibilidad Operacional (Offline): Este es el componente más crítico para la faena. La intermitencia de la conectividad (Wi-Fi/4G) en áreas de la mina no afectará la captura de datos. Google AppSheet está diseñado para funcionar en modo offline. Un operador podrá completar y guardar múltiples “checklists” o reportes de intervención en su dispositivo sin conexión. Los datos se guardarán de forma segura en el dispositivo local y se sincronizarán automáticamente en segundo plano con Google Sheets al recuperar la conectividad, asegurando la continuidad total de la captura de datos.
+
+Gestión de Continuidad del Negocio
+
+Se establecen procedimientos proactivos y reactivos para impedir o minimizar las consecuencias de una interrupción grave del servicio.
+
+Procedimientos Proactivos (Prevención):
+
+Mitigación de Riesgos Operativos: El sistema en sí es la principal medida proactiva. La detección temprana de fallas (SLA 1) y la gestión ágil del mantenimiento previenen las detenciones prolongadas que interrumpen el servicio al cliente.
+
+Preservación del Conocimiento Institucional: Al centralizar todo el historial de mantenimiento en Google Sheets (respaldado en Google Drive), se elimina la dependencia del "conocimiento individual" de los técnicos, asegurando la continuidad operativa incluso con la rotación de personal clave.
+
+Resiliencia y Seguridad de Datos: Los datos digitales en Google Sheets están protegidos contra pérdidas físicas (incendios, robos) y cuentan con historial de versiones para recuperarse de errores humanos. Además, están respaldados por las políticas de backup y recuperación de desastres de Google.
+
+Procedimientos Reactivos (Recuperación):
+
+Desastre en la Nube (Evento de muy baja probabilidad): La recuperación de la infraestructura de GCP/Workspace es responsabilidad de Google. El plan de continuidad de SOMACOR en este escenario extremo sería revertir temporalmente al uso de un stock de emergencia de formularios de papel pre-impresos, mantenidos como contingencia en faena.
+
+Pérdida de Conectividad Prolongada en Faena (Evento probable):
+
+Captura de Datos: Continúa sin interrupciones a través del modo offline de AppSheet.
+
+Alertas y Notificaciones: Los flujos de Apps Script no se activarán hasta que los datos se sincronicen. Durante la interrupción, los Operadores utilizarán el protocolo de comunicación por radio o teléfono para informar fallas críticas al Supervisor (procedimiento actual), quien tomará acciones manuales. En cuanto se restablezca el servicio de datos, toda la información de AppSheet se sincronizará automáticamente, actualizando el sistema y los KPIs.
+
+Plan de Mantención y Control de Cambios
+
+Se establecerá un plan de gestión continua para la plataforma no-code/low-code, con un responsable designado del equipo de TI o de operaciones.
+
+Plan de Mantención de la Solución:
+
+Tareas Continuas: Actualización periódica de los ítems del checklist en AppSheet, ajuste de flujos en Apps Script para adaptar reglas de negocio (ej. cambiar destinatarios de alertas de Gmail), gestión de permisos de acceso a las Hojas de Google Sheets y evolución de dashboards en Looker Studio según nuevas necesidades de análisis.
+
+Procedimiento de Control de Cambios e Incidentes:
+
+Se implementará un proceso formal para evitar modificaciones no controladas que puedan afectar la operación en producción:
+
+Solicitud de Cambio: Un usuario (ej. Supervisor) solicita una modificación a través de un formulario simple (ej. un Google Form).
+
+Evaluación: El responsable de la solución evalúa el impacto (en AppSheet, Sheets, Apps Script), el esfuerzo y el beneficio del cambio.
+
+Aprobación: Se aprueba o rechaza el cambio.
+
+Implementación y Pruebas (Entorno de Pruebas): El cambio se desarrolla y prueba en un entorno de desarrollo/pruebas (una copia de la aplicación de AppSheet y de las Hojas de Google Sheets) para no afectar la producción.
+
+Despliegue: Una vez validado en el entorno de pruebas, el cambio se implementa en el entorno de producción durante una ventana de bajo impacto (ej. cambio de turno).
+
+Gestión de Incidentes: Los problemas (bugs) se reportarán vía Google Chat o correo, se registrarán en una Hoja de Google Sheets (Registro de Incidentes), se clasificarán por prioridad y se seguirán hasta su resolución.
+
+Asignación de Recursos y Proyección de Costos
+
+Este apartado presenta un análisis financiero del proyecto, detallando la inversión necesaria. detallando la inversión necesaria en capital humano y otros recursos
+
+Esta sección se ha reescrito para reflejar un modelo financiero más preciso y transparente, incorporando los costos de licenciamiento de la plataforma Google. Esta transparencia fortalece el caso de negocio al presentar un presupuesto realista que, como se demostrará, mantiene un retorno de la inversión excepcionalmente alto.
+
+Estructura de Recursos del Proyecto
+
+El equipo está conformado por una combinación de personal dedicado al proyecto y expertos en la materia provenientes del área operativa.
+
+Roles Definidos
+
+Jefe de Proyecto (Project Manager): Responsable de la planificación general, ejecución, seguimiento y reporte del proyecto.
+
+Desarrollador No-code/Low-code (AppSheet, Apps Script): Líder técnico responsable de la configuración de Google Sheets (base de datos), la creación de la aplicación móvil en Google AppSheet, el desarrollo de flujos de automatización en Google Apps Script y la elaboración de los paneles de control en Looker Studio.
+
+Supervisor de Mantenimiento (SME): Usuario clave de la operación en La Coipa. Aporta el conocimiento crítico del dominio y lidera las Pruebas de Aceptación de Usuario (UAT).
+
+Técnico de Mantenimiento (SME): Usuario final que valida la usabilidad de la aplicación AppSheet para el registro de intervenciones y solicitud de repuestos.
+
+Operador de Equipo (SME): Usuario final que valida los “checklists” de inspección diaria en AppSheet, asegurando su eficacia en dispositivos móviles.
+
+Soporte TI Interno (IT Support): Responsable de la gestión de cuentas de Google Workspace y permisos.
+
+Matriz de Asignación de Horas por Rol y Fase
+
+La siguiente tabla detalla el compromiso de recursos requerido a lo largo del cronograma de 11 semanas.
+
+Tabla 7.1: Matriz de Asignación de Horas \
+
+Análisis de Costos
+
+Este subapartado desglosa el presupuesto del proyecto. El costo de Capital Humano (HH) se mantiene idéntico al del informe original , ya que las horas-hombre de desarrollo low-code son equivalentes entre plataformas. La diferencia clave radica en la inclusión de los costos de licenciamiento de software.
+
+Tabla 7.2: Costo de Capital Humano (HH)
+
+Costos de Insumos (Software) y Ahorros Asociados
+
+Este apartado aborda los costos recurrentes de la nueva plataforma de Google.
+
+Software e Infraestructura (Nuevo Costo OPEX):
+
+Una solución empresarial robusta que requiere automatización y gobernanza necesita licencias pagadas.
+
+Licencias de Google Workspace: Se asume que SOMACOR ya posee o adquirirá licencias (ej. Business Standard) para las cuentas de usuario (Gmail, Drive, Sheets, Chat). Este costo se considera parte de la infraestructura de TI corporativa existente.
+
+Licencias de Google AppSheet: Este es el costo de software directo del proyecto. Para habilitar la automatización (Apps Script) y las características de seguridad necesarias, se requiere el plan "Core" o "Pro".
+
+Costo Estimado (Plan "Core"): $10.000 CLP por usuario/mes.
+
+Supuesto de Usuarios (Piloto La Coipa): 50 usuarios (Operadores, Técnicos, Supervisores, Logística, Gerencia).
+
+Costo Mensual: 50 usuarios * $10.000 CLP/usuario = $500.000 CLP
+
+Costo Anual (Año 1): $500.000 CLP * 12 meses = $6.000.000 CLP
+
+Este modelo de costo es transparente, predecible y significativamente más bajo que el de las alternativas (ej. Power Apps, que comienza en $20.000 CLP/usuario/mes ) y es una fracción del costo de un CMMS tradicional.
+
+Ahorros Asociados (Insumos de Oficina):
+
+El ahorro por eliminación de papel (10 resmas/mes) se mantiene 1, generando un ahorro anual modesto pero tangible que apoya la norma ISO 14001.
+
+Provisión para Contingencias
+
+Se mantiene un fondo de contingencia prudente del 15% sobre el costo total de Capital Humano, para gestionar riesgos imprevistos o cambios menores en el alcance.
+
+Cálculo de Contingencia: 15% de $15.933.406 = $2.390.010 CLP
+
+Presupuesto Consolidado y Análisis de Retorno de Inversión (ROI)
+
+La siguiente tabla resume la inversión total del proyecto para el primer año.
+
+Tabla 7.3: Presupuesto Consolidado (Pila Google, Año 1)
+
+Análisis de Retorno de Inversión (ROI) Recalculado:
+
+El análisis de ROI sigue siendo extremadamente positivo. La inversión total del primer año ($23.9M CLP) se compara directamente con los costos de inactividad identificados en el diagnóstico :
+
+Costo de 1 detención del Supersucker: $10.657.500 CLP.
+
+Costo de 1 detención del Cargador Frontal: $7.402.500 CLP.
+
+Conclusión del ROI: La inversión total del proyecto (implementación + licenciamiento del primer año) se recupera completamente al evitar solo tres detenciones de equipos críticos (ej. 2 del Supersucker y 1 del Cargador Frontal).
+
+Considerando que la línea base actual es de 15 días de detención promedio , y el sistema está diseñado para reducir drásticamente este tiempo (KPI 1) y las aprobaciones de repuestos (SLA 3), el proyecto está recuperando la inversión entre 4-6 meses
+
+Cronograma (Carta Gantt)
+
+El plan de ejecución detallado traduce el enfoque por fases (descrito en el plan de implementación) a un cronograma específico de 11 semanas. La migración tecnológica a la pila de Google no altera este cronograma, ya que el esfuerzo de desarrollo no-code/low-code es comparable.
+
+Para fines de planificación, se mantiene la fecha de inicio asumida del Lunes, 13 de octubre de 2025.
+
+RoadMap
+
+El gráfico muestra el plan de ejecución de 11 semanas, con una fecha de inicio planificada para el 13 de octubre de 2025. El cronograma abarca desde octubre de 2025 hasta enero de 2026, con el tiempo dividido por semanas (S1, S2, S3, S4) para cada mes.
+
+La imagen es un informe de estado en un punto específico del proyecto muestra el porcentaje de avance de cada fase principal:
+
+Fase 1: Diseño y Desarrollo: 100% completado.
+
+Fase 2: Pruebas Internas y Ajustes: 100% completado.
+
+Fase 3: Implementación Piloto y UAT: 61% completado (Fase actualmente en progreso).
+
+Fase 4: Despliegue Completo (Faena Piloto): 0% completado (Aún no ha comenzado).
+
+A continuación, se detalla el desglose de las actividades mostradas en la imagen:
+
+Desglose de Fases y Actividades
+
+Fase 1: Diseño y Desarrollo (100% Completada) Esta fase, marcada en verde, está totalmente finalizada. Según el informe, su duración planificada era del 13 de octubre al 26 de noviembre de 2025.
+
+Planificación Inicial y Requisitos: Completada (Semana 1 y 2 de Oct).
+
+Diseño de Base de Datos y Formularios: Completada (Semana 3 de Oct a Semana 2 de Nov).
+
+Desarrollo de Flujos y “Dashboards”: Completada (Semana 1 a Semana 3 de Nov).
+
+Fase 2: Pruebas Internas y Ajustes (100% Completada) Esta fase, también en verde, se completó exitosamente. El informe la sitúa entre el 26 de noviembre y el 16 de diciembre de 2025.
+
+Ejecución de Pruebas Unitarias: Completada (Semana 4 de Nov a Semana 1 de Dic).
+
+Ejecución de Pruebas de Integración: Completada (Semana 2 de Dic).
+
+Preparación para Piloto: Completada (Semana 3 de Dic).
+
+Fase 3: Implementación Piloto y UAT (61% en Progreso) Esta es la fase activa del proyecto. Está marcada en color naranja y muestra un avance del 61%. El informe asigna esta fase del 16 de diciembre de 2025 al 8 de enero de 2026.
+
+Capacitación y Lanzamiento Piloto (UAT): En progreso (Semana 3 a Semana 4 de Dic).
+
+Recopilación de Feedback y Soporte: Pendiente (Semana 4 de Dic a Semana 1 de Ene).
+
+Ajustes Finales (Post-UAT): Pendiente (Semana 1 a Semana 2 de Ene).
+
+Fase 4: Despliegue Completo (Faena Piloto) (0% Pendiente) Esta fase final, marcada en rojo/rosa y gris, aún no ha comenzado. Está programada para ejecutarse del 8 de enero al 22 de enero de 2026.
+
+Go-Live Oficial y Soporte (Hypercare): Pendiente (Semana 2 a Semana 3 de Ene).
+
+Capacitación Masiva: Pendiente (Semana 3 de Ene).
+
+Transición y Cierre de Fase: Pendiente (Semana 3 de Ene).
+
+Calendario de Fases e Hitos Clave
+
+Fase 1: Diseño y Desarrollo (13-Oct-2025 al 26-Nov-2025)
+
+Hitos: Reunión de Kick-off, Documento de Requisitos validado, Base de datos (Google Sheets) creada, Aplicación (AppSheet) diseñada, Flujos (Apps Script) desarrollados, Mockups de Dashboards (Looker Studio) aprobados.
+
+Fase 2: Pruebas Internas y Ajustes (26-Nov-2025 al 16-Dic-2025)
+
+Hitos: Pruebas Unitarias finalizadas, Pruebas de Integración (End-to-End) finalizadas (incluyendo pruebas offline), Registro de bugs resuelto, Material de capacitación UAT listo.
+
+Fase 3: Implementación Piloto y UAT (16-Dic-2025 al 08-Ene-2026)
+
+Hitos: Equipo piloto (SME) en faena capacitado, Período de UAT en operaciones reales finalizado, Feedback recopilado, Acta de Aceptación de Usuario (Sign-Off) firmada.
+
+Fase 4: Despliegue Completo (Faena Piloto) (08-Ene-2026 al 22-Ene-2026)
+
+Hitos: Capacitación masiva a todos los usuarios de la faena, Lanzamiento oficial ("Go-Live"), Período de soporte intensivo (Hypercare) finalizado, Cese oficial de formularios físicos.
+
+Fase 5: Monitoreo y Optimización (A partir del 22-Ene-2026)
+
+Hitos: Inicio formal del monitoreo de KPIs en Looker Studio, Transición del soporte al equipo de TI Interno.
+
+Carta Gantt
+
+Carta Gantt por fases
+
+Fase 1
+
+fase 2
+
+Fase 3
+
+Fase 4
+
+Fase 5
+
+Conclusiones
+
+El presente informe ha detallado la concepción, diseño y planificación de un Sistema de Mantenimiento con Trazabilidad Digital para SOMACOR S.A. Este documento no solo aborda la problemática operativa original, sino que también incorpora las correcciones metodológicas solicitadas y ejecuta una migración estratégica completa de la pila tecnológica propuesta, pasando de Microsoft 365 a Google Cloud Platform (GCP) y Google Workspace.
+
+Referencias
+
+Bizagi. (2025). Bizagi Modeler: Process Modeling Software. Obtenido de bizagi.com.
+
+Google. (2025). Documentación Oficial de Google AppSheet. Obtenido de support.google.com/appsheet.
+
+Google. (2025). Guía para Desarrolladores de Google Apps Script. Obtenido de developers.google.com/apps-script.
+
+Google. (2025). Guía de Inicio Rápido de Looker Studio. Obtenido de docs.cloud.google.com/looker/docs/studio.
+
+Google. (2025). Integración de AppSheet con Google Sheets. Obtenido de support.google.com/appsheet.
+
+Google. (2025). Triggers y Eventos en Google Apps Script. Obtenido de developers.google.com/apps-script/guides/triggers.
+
+Hevo Data. (2024). Google BigQuery vs Azure Synapse: A Comprehensive Guide. Obtenido de hevodata.com.
+
+Holistics. (2025). Looker Studio (Google Data Studio) vs Power BI: The Ultimate Comparison. Obtenido de holistics.io.
+
+Kitrum. (2024). Microsoft Azure vs GCP vs AWS: Comparison Guide. Obtenido de kitrum.com.
+
+Lowcode Agency. (2024). AppSheet vs PowerApps: The Ultimate Comparison. Obtenido de lowcode.agency.
+
+MaxGrip. (2024). Reliability-Centered Maintenance (RCM): 8 Steps for Performance Improvement. Obtenido de maxgrip.com.
+
+Microsoft. (2025). Comparación de servicios de Google Cloud y Azure. Obtenido de learn.microsoft.com.
+
+Panaya. (2024). What is UAT Testing? A Best Practices Guide. Obtenido de panaya.com.
+
+Quest. (2025). erwin Data Modeler: Industry-Leading Data Modeling Tool. Obtenido de quest.com.
+
+ResearchGate. (2021). A hybrid reliability-centered maintenance approach for mining transportation machines. Obtenido de researchgate.net.
+
+StarUML. (2025). StarUML: A Sophisticated Software Modeler. Obtenido de staruml.io.
+
+TestRail. (2025). How to Create a Test Plan. Obtenido de testrail.com.
+
+Walturn. (2024). Understanding ISO 9001 and 90003 for Software Quality Management. Obtenido de walturn.com.
+
+Obras citadas
+
+proyecto de titulo eva2 (1).docx
+
+Reliability Centred Maintenance (RCM) Explained | AME - Asset Management Engineers, fecha de acceso: noviembre 13, 2025, https://www.asseteng.com.au/blog/reliability-centred-maintenance-rcm/
+
+(PDF) A hybrid reliability-centered maintenance approach for mining transportation machines: a real case in Esfahan - ResearchGate, fecha de acceso: noviembre 13, 2025, https://www.researchgate.net/publication/347832478_A_hybrid_reliability-centered_maintenance_approach_for_mining_transportation_machines_a_real_case_in_Esfahan
+
+Reliability Centered Maintenance (RCM): 8 Steps for Performance Improvement - MaxGrip, fecha de acceso: noviembre 13, 2025, https://www.maxgrip.com/solutions/reliability-centered-maintenance-rcm-8-steps-for-performance-improvement/
+
+GW Apps vs AppSheet, fecha de acceso: noviembre 13, 2025, https://gwapps.com/resources/gw-apps-vs-appsheet/
+
+Apps Script | Google for Developers, fecha de acceso: noviembre 13, 2025, https://developers.google.com/apps-script
+
+Looker Studio: Business Insights Visualizations | Google Cloud, fecha de acceso: noviembre 13, 2025, https://cloud.google.com/looker-studio
+
+AppSheet: No-code App Development | Google Cloud, fecha de acceso: noviembre 13, 2025, https://cloud.google.com/appsheet
+
+Why Google Cloud, fecha de acceso: noviembre 13, 2025, https://cloud.google.com/why-google-cloud
+
+Get Ahead of the Game: The Benefits Of Google Workspace (G Suite) For Your Business, fecha de acceso: noviembre 13, 2025, https://zenphi.com/get-ahead-of-the-game-the-benefits-of-google-workspace-g-suite-for-your-business/
+
+Comparing AWS, Azure, GCP | DigitalOcean, fecha de acceso: noviembre 13, 2025, https://www.digitalocean.com/resources/articles/comparing-aws-azure-gcp
+
+Power BI vs Looker 2025: Key Differences, Pricing & Use Cases - TechnologyAdvice, fecha de acceso: noviembre 13, 2025, https://technologyadvice.com/business-intelligence/resources/power-bi-vs-looker/
+
+Looker Studio vs Power BI: The Better BI Tool In 2025? - Holistics, fecha de acceso: noviembre 13, 2025, https://holistics.io/blog/looker-vs-power-bi/
+
+When to use AppSheet or Apps Script in Google Workspace, fecha de acceso: noviembre 13, 2025, https://workspace.google.com/blog/developers-practitioners/when-to-use-appsheet-or-apps-script-in-google-workspace
+
+Google AppSheet vs Google Forms Comparison | SaaSworthy.com, fecha de acceso: noviembre 13, 2025, https://www.saasworthy.com/compare/appsheet-vs-google-forms?pIds=87,3283
+
+Appsheet vs Power Apps | 9 Factors to Decide the Best One, fecha de acceso: noviembre 13, 2025, https://www.lowcode.agency/blog/appsheet-vs-powerapps
+
+6 Key differences between Power BI Vs Google Data Studio, fecha de acceso: noviembre 13, 2025, https://hevodata.com/learn/power-bi-vs-google-data-studio/
+
+Business Process Automation powered by Google Cloud Platform - Cloud4C, fecha de acceso: noviembre 13, 2025, https://www.cloud4c.com/blogs/business-process-automation-google-cloud
+
+Compare AppSheet vs Power Apps 2025 | TrustRadius, fecha de acceso: noviembre 13, 2025, https://www.trustradius.com/compare-products/appsheet-vs-powerapps
+
+Sheets + AppSheet: The No-Code Duo | Google Workspace Blog, fecha de acceso: noviembre 13, 2025, https://workspace.google.com/blog/developers-practitioners/turn-google-sheet-data-into-a-no-code-web-app-with-appsheet
+
+Use data from Google Sheets - AppSheet Help, fecha de acceso: noviembre 13, 2025, https://support.google.com/appsheet/answer/10106594?hl=en
+
+Simple Triggers | Apps Script | Google for Developers, fecha de acceso: noviembre 13, 2025, https://developers.google.com/apps-script/guides/triggers
+
+Quick start guide | Looker Studio | Google Cloud Documentation, fecha de acceso: noviembre 13, 2025, https://docs.cloud.google.com/looker/docs/studio/quick-start-guide
+
+App design 101 - AppSheet Help, fecha de acceso: noviembre 13, 2025, https://support.google.com/appsheet/answer/10099795?hl=en
+
+Analytics on GCP vs AZURE vs AWS - Infiflex Technologies, fecha de acceso: noviembre 13, 2025, https://www.infiflex.com/analytics-on-gcp-vs-azure-vs-aws
+
+Comprehensive Comparison of AWS vs Azure vs GCP for 2024 - BroadTekniks, fecha de acceso: noviembre 13, 2025, https://www.broadtekniks.com/blog/blog-1/comprehensive-comparison-of-aws-vs-azure-vs-gcp-for-2024-15
+
+Microsoft Azure vs GCP vs AWS Comparison Guide 2025 - KITRUM, fecha de acceso: noviembre 13, 2025, https://kitrum.com/blog/microsoft-azure-vs-gcp-vs-aws-comparison-guide/
+
+Microsoft Azure vs. Google Cloud Platform: Cloud Platform Comparison - Leobit, fecha de acceso: noviembre 13, 2025, https://leobit.com/blog/microsoft-azure-vs-google-cloud-platform-a-comprehensive-comparison-of-cloud-services/
+
+Compare AWS, Azure and GCP for AI and Machine Learning : r/MLQuestions - Reddit, fecha de acceso: noviembre 13, 2025, https://www.reddit.com/r/MLQuestions/comments/1f2gp47/compare_aws_azure_and_gcp_for_ai_and_machine/
+
+What's the Difference Between AWS vs. Azure vs. Google Cloud? - Coursera, fecha de acceso: noviembre 13, 2025, https://www.coursera.org/articles/aws-vs-azure-vs-google-cloud
+
+Compare AWS and Azure services to Google Cloud | Get started, fecha de acceso: noviembre 13, 2025, https://docs.cloud.google.com/docs/get-started/aws-azure-gcp-service-comparison
+
+Google Cloud to Azure services comparison - Azure Architecture Center | Microsoft Learn, fecha de acceso: noviembre 13, 2025, https://learn.microsoft.com/en-us/azure/architecture/gcp-professional/services
+
+BigQuery vs. Azure Synapse: 8 Crucial Differences - CData Software, fecha de acceso: noviembre 13, 2025, https://www.cdata.com/blog/bigquery-vs-azure-synapse
+
+Azure Synapse vs BigQuery: Cloud Data Warehouse Showdown - CloudOptimo, fecha de acceso: noviembre 13, 2025, https://www.cloudoptimo.com/blog/azure-synapse-vs-bigquery-cloud-data-warehouse-showdown/
+
+Google BigQuery vs Azure Synapse: Which One to Choose? - Hevo Data, fecha de acceso: noviembre 13, 2025, https://hevodata.com/learn/google-bigquery-vs-azure-synapse/
+
+BigQuery vs Synapse — who is currently winning the battle? | by Filip Trocinski - Medium, fecha de acceso: noviembre 13, 2025, https://medium.com/datasparq-technology/bigquery-vs-synapse-who-is-currently-winning-the-battle-7b9e3b2d19f2
+
+fecha de acceso: noviembre 13, 2025, https://www.bizagi.com/en/platform/modeler#:~:text=Bizagi's%20intuitive%20business%20process%20modeling,processes%20to%20identify%20improvement%20opportunities.
+
+Process Modeling Software - Bizagi Modeler, fecha de acceso: noviembre 13, 2025, https://www.bizagi.com/en/platform/modeler
+
+Bizagi - Wikipedia, fecha de acceso: noviembre 13, 2025, https://en.wikipedia.org/wiki/Bizagi
+
+fecha de acceso: noviembre 13, 2025, https://en.wikipedia.org/wiki/StarUML#:~:text=StarUML%20is%20a%20software%20engineering,Language%2C%20and%20classical%20modeling%20notations.
+
+StarUML - Wikipedia, fecha de acceso: noviembre 13, 2025, https://en.wikipedia.org/wiki/StarUML
+
+StarUML, fecha de acceso: noviembre 13, 2025, https://staruml.io/
+
+fecha de acceso: noviembre 13, 2025, https://www.quest.com/products/erwin-data-modeler/#:~:text=erwin%20Data%20Modeler%20ensures%20accurate,dependencies%20and%20optimize%20migration%20processes.
+
+erwin Data Modeler | Industry-Leading Data Modeling Tool | erwin, Inc. - Quest Software, fecha de acceso: noviembre 13, 2025, https://www.quest.com/products/erwin-data-modeler/
+
+Basic Features - erwin, fecha de acceso: noviembre 13, 2025, https://bookshelf.erwin.com/bookshelf/public_html/Content/User%20Guides/erwin%20Help/Basic_Features.html
+
+Free Test Plan Template | Confluence - Atlassian, fecha de acceso: noviembre 13, 2025, https://www.atlassian.com/software/confluence/resources/guides/how-to/test-plan
+
+How To Create A Test Plan (Steps, Examples, & Template) - TestRail, fecha de acceso: noviembre 13, 2025, https://www.testrail.com/blog/create-a-test-plan/
+
+What is a Test Plan: Importance, Components, How to Create Test Plan | BrowserStack, fecha de acceso: noviembre 13, 2025, https://www.browserstack.com/test-management/features/test-run-management/what-is-test-plan
+
+User Acceptance Testing (UAT) Explained: Process, Full Form & Best Practices - Panaya, fecha de acceso: noviembre 13, 2025, https://www.panaya.com/blog/testing/what-is-uat-testing/
+
+User Acceptance Testing (UAT) Explained: Process, Full Form ..., fecha de acceso: noviembre 13, 2025, https://panaya.com/blog/testing/what-is-uat-testing/
+
+Test Plan - Federal Shared Services, fecha de acceso: noviembre 13, 2025, https://ussm.gsa.gov/assets/files/M3-Playbook-Test-Plan-Template.docx
+
+User Acceptance Testing (UAT): Definition, Types & Best Practices | Splunk, fecha de acceso: noviembre 13, 2025, https://www.splunk.com/en_us/blog/learn/user-acceptance-testing-uat.html
+
+5 Steps To Set Up User Acceptance Testing (UAT) Process Flow + Checklist - Usersnap, fecha de acceso: noviembre 13, 2025, https://usersnap.com/blog/user-acceptance-testing-workflow/
+
+Understanding ISO 9001 and 90003 for Software Quality Management, fecha de acceso: noviembre 13, 2025, https://www.walturn.com/insights/understanding-iso-9001-and-90003-for-software-quality-management
+
+ISO 9001 compliance software for quality management - Ideagen, fecha de acceso: noviembre 13, 2025, https://www.ideagen.com/standards/iso-9001
+
+Creating a successful software implementation plan: Key steps - Hello Bonsai, fecha de acceso: noviembre 13, 2025, https://www.hellobonsai.com/blog/software-implementation-plan
+
+The Complete Step-By-Step Guide to Software Implementation Planning - Canidium, fecha de acceso: noviembre 13, 2025, https://www.canidium.com/blog/guide-to-software-implementation-planning
+
+AppSheet vs Power Apps vs Clappia: Which No-Code Platform Is Best for Your Business?, fecha de acceso: noviembre 13, 2025, https://www.clappia.com/blog/appsheet-vs-power-apps-vs-clappia
+
+How to create an app | Google AppSheet, fecha de acceso: noviembre 13, 2025, https://about.appsheet.com/how-to-create-an-app/
+
+Google Data Studio vs Power BI: An In-Depth Insider Comparison - Holistics, fecha de acceso: noviembre 13, 2025, https://www.holistics.io/blog/google-data-studio-vs-power-bi/
+
+StarUML documentation: Introduction, fecha de acceso: noviembre 13, 2025, https://docs.staruml.io/

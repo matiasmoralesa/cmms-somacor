@@ -1,0 +1,222 @@
+[
+  {
+    "code": "SUPERSUCKER-CH01",
+    "name": "Check List Camión Supersucker",
+    "vehicle_type": "CAMION_SUPERSUCKER",
+    "description": "Checklist de inspección diaria para Camión Supersucker",
+    "is_system_template": true,
+    "passing_score": 80,
+    "items": [
+      {
+        "section": "Motor",
+        "order": 1,
+        "question": "Nivel de aceite motor",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Motor",
+        "order": 2,
+        "question": "Fugas de aceite",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Motor",
+        "order": 3,
+        "question": "Nivel de líquido refrigerante",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Sistema de Vacío",
+        "order": 4,
+        "question": "Funcionamiento del sistema de vacío",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Sistema de Vacío",
+        "order": 5,
+        "question": "Estado de mangueras",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Tanque",
+        "order": 6,
+        "question": "Estado del tanque (sin fugas)",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Frenos",
+        "order": 7,
+        "question": "Funcionamiento de freno de servicio",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Frenos",
+        "order": 8,
+        "question": "Funcionamiento de freno de estacionamiento",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Neumáticos",
+        "order": 9,
+        "question": "Presión de neumáticos",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Neumáticos",
+        "order": 10,
+        "question": "Estado de neumáticos",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Luces y Señalización",
+        "order": 11,
+        "question": "Luces delanteras",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Luces y Señalización",
+        "order": 12,
+        "question": "Luces traseras",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Luces y Señalización",
+        "order": 13,
+        "question": "Luces de emergencia",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Seguridad",
+        "order": 14,
+        "question": "Extintor",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Seguridad",
+        "order": 15,
+        "question": "Botiquín",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      }
+    ]
+  },
+  {
+    "code": "F-PR-020-CH01",
+    "name": "Check List Camionetas MDO",
+    "vehicle_type": "CAMIONETA_MDO",
+    "description": "Checklist de inspección diaria para Camionetas MDO",
+    "is_system_template": true,
+    "passing_score": 80,
+    "items": [
+      {
+        "section": "Motor",
+        "order": 1,
+        "question": "Nivel de aceite motor",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Motor",
+        "order": 2,
+        "question": "Nivel de líquido refrigerante",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Frenos",
+        "order": 3,
+        "question": "Funcionamiento de freno de servicio",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Frenos",
+        "order": 4,
+        "question": "Funcionamiento de freno de estacionamiento",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Neumáticos",
+        "order": 5,
+        "question": "Presión de neumáticos",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Neumáticos",
+        "order": 6,
+        "question": "Estado de neumáticos",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Luces",
+        "order": 7,
+        "question": "Luces delanteras",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Luces",
+        "order": 8,
+        "question": "Luces traseras",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Seguridad",
+        "order": 9,
+        "question": "Extintor",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "Seguridad",
+        "order": 10,
+        "question": "Botiquín",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      }
+    ]
+  }
+]

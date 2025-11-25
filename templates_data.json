@@ -1,0 +1,196 @@
+[
+  {
+    "code": "F-PR-020-CH01",
+    "name": "Check List Camionetas MDO",
+    "vehicle_type": "CAMIONETA_MDO",
+    "description": "Checklist diario para Camionetas MDO",
+    "is_system_template": true,
+    "passing_score": 80,
+    "items": [
+      {
+        "section": "I - Auto Evaluación",
+        "order": 1,
+        "question": "Cumplo con descanso suficiente y condiciones para manejo seguro",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "I - Auto Evaluación",
+        "order": 2,
+        "question": "Cumplo con condiciones físicas adecuadas sin dolencias",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "I - Auto Evaluación",
+        "order": 3,
+        "question": "Consciente de responsabilidad al conducir",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "II - Documentación Operador",
+        "order": 4,
+        "question": "Licencia Municipal",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "II - Documentación Operador",
+        "order": 5,
+        "question": "Licencia interna de Faena",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 6,
+        "question": "Permiso de Circulación",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 7,
+        "question": "Revisión Técnica",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 8,
+        "question": "Seguro Obligatorio",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 9,
+        "question": "Cinturones de Seguridad en buen estado",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 10,
+        "question": "Espejos interior y exterior limpios",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 11,
+        "question": "Frenos (incluye freno de mano) operativos",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 12,
+        "question": "Neumáticos en buen estado (incluye repuestos)",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 13,
+        "question": "Luces (Altas, Bajas, Frenos, intermitentes)",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 14,
+        "question": "Vidrios y parabrisas limpios",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "III - Requisitos",
+        "order": 15,
+        "question": "Gata y llave de rueda disponible",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 16,
+        "question": "Baliza y pértiga funcionando",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 17,
+        "question": "Radio Base funciona en todos los canales",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 18,
+        "question": "Limpiaparabrisas funciona",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 19,
+        "question": "Bocina en buen estado",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 20,
+        "question": "Orden y Aseo interior",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 21,
+        "question": "Estado carrocería y parachoques",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 22,
+        "question": "Cuñas de seguridad (2)",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      },
+      {
+        "section": "IV - Complementarios",
+        "order": 23,
+        "question": "Aire acondicionado/calefacción",
+        "response_type": "yes_no_na",
+        "required": true,
+        "observations_allowed": true
+      }
+    ]
+  }
+]
