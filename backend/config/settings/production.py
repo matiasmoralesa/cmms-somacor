@@ -157,6 +157,7 @@ LOGGING = {
 if os.getenv('RAILWAY_ENVIRONMENT'):
     # Railway detectado
     ALLOWED_HOSTS.append('.railway.app')
+    ALLOWED_HOSTS.append('*')  # Permitir todos los hosts en Railway
     
     # Railway proporciona DATABASE_URL automáticamente
     if os.getenv('DATABASE_URL'):
@@ -177,3 +178,7 @@ if os.getenv('RAILWAY_ENVIRONMENT'):
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    
+    # Deshabilitar módulos de GCP que no se usan en Railway
+    GS_BUCKET_NAME = None
+    GS_PROJECT_ID = None
