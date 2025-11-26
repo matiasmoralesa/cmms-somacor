@@ -2,7 +2,7 @@
 nixPkgs = ['python39', 'postgresql']
 
 [phases.install]
-cmds = ['pip install -r backend/requirements-railway.txt']
+cmds = ['pip install -r backend/requirements.txt']
 
 [start]
 cmd = 'cd backend && chmod +x start-railway.sh && ./start-railway.sh'
