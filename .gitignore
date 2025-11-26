@@ -243,3 +243,8 @@ temp_*.py
 *.ps1
 !setup.ps1
 !deploy.ps1
+
+# Railway credentials (local only)
+CREDENCIALES_RAILWAY_LOCAL.txt
+railway-env-vars.txt
+*RAILWAY*PASO_A_PASO*.md
