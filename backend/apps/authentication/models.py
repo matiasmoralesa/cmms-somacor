@@ -164,6 +164,17 @@ class User(AbstractUser):
         verbose_name='Telegram ID'
     )
     
+    # Firebase integration
+    firebase_uid = models.CharField(
+        max_length=128,
+        unique=True,
+        null=True,
+        blank=True,
+        verbose_name='Firebase UID',
+        help_text='Unique identifier from Firebase Authentication',
+        db_index=True
+    )
+    
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

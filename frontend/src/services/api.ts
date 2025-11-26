@@ -1,7 +1,8 @@
 /**
- * Axios instance configuration
+ * Axios instance configuration - Firebase Authentication
  */
 import axios from 'axios';
+import { auth } from '../config/firebase';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
 
@@ -12,12 +13,29 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to add auth token
+// Request interceptor to add Firebase ID token
 api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+  async (config) => {
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        // Get fresh Firebase ID token
+        const token = await user.getIdToken();
+        config.headers.Authorization = `Bearer ${token}`;
+      } catch (error) {
+        console.error('Error getting Firebase token:', error);
+        // Try to use cached token from localStorage
+        const cachedToken = localStorage.getItem('firebaseToken');
+        if (cachedToken) {
+          config.headers.Authorization = `Bearer ${cachedToken}`;
+        }
+      }
+    } else {
+      // No Firebase user, try cached token
+      const cachedToken = localStorage.getItem('firebaseToken');
+      if (cachedToken) {
+        config.headers.Authorization = `Bearer ${cachedToken}`;
+      }
     }
     return config;
   },
@@ -37,29 +55,25 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshToken = localStorage.getItem('refreshToken');
+        const user = auth.currentUser;
         
-        if (!refreshToken) {
-          // No refresh token, redirect to login
+        if (!user) {
+          // No Firebase user, redirect to login
           window.location.href = '/login';
           return Promise.reject(error);
         }
 
-        // Try to refresh token
-        const response = await axios.post(`${API_URL}/auth/refresh/`, {
-          refresh: refreshToken,
-        });
-
-        const { access } = response.data;
-        localStorage.setItem('accessToken', access);
+        // Force refresh Firebase token
+        const newToken = await user.getIdToken(true);
+        localStorage.setItem('firebaseToken', newToken);
 
         // Retry original request with new token
-        originalRequest.headers.Authorization = `Bearer ${access}`;
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
         return api(originalRequest);
       } catch (refreshError) {
         // Refresh failed, clear tokens and redirect to login
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('firebaseToken');
+        localStorage.removeItem('user');
         window.location.href = '/login';
         return Promise.reject(refreshError);
       }

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.notifications',
     'apps.reports',
     'apps.machine_status',
+    'apps.images',  # Image processing and Firebase integration
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # REST Framework - Optimizado para Free Tier
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'apps.authentication.firebase_auth.FirebaseAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Backward compatibility
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -381,3 +383,130 @@ CACHES = {
 # Sesiones en base de datos para evitar dependencia de Redis
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_CACHE_ALIAS = 'default'
+
+
+# ============================================================================
+# CELERY CONFIGURATION
+# ============================================================================
+
+# Celery Broker (Redis)
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://localhost:6379/1')
+
+# Celery Task Settings
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TIMEZONE = 'America/Santiago'
+CELERY_ENABLE_UTC = True
+
+# Task execution settings
+CELERY_TASK_ACKS_LATE = True
+CELERY_TASK_REJECT_ON_WORKER_LOST = True
+CELERY_TASK_TIME_LIMIT = 1800  # 30 minutes
+CELERY_TASK_SOFT_TIME_LIMIT = 1500  # 25 minutes
+
+# Worker settings
+CELERY_WORKER_PREFETCH_MULTIPLIER = 1
+CELERY_WORKER_MAX_TASKS_PER_CHILD = 1000
+CELERY_WORKER_CONCURRENCY = 5  # Max 5 concurrent tasks per worker
+
+# Retry settings
+CELERY_TASK_AUTORETRY_FOR = (Exception,)
+CELERY_TASK_MAX_RETRIES = 3
+CELERY_TASK_RETRY_BACKOFF = True
+CELERY_TASK_RETRY_BACKOFF_MAX = 600  # 10 minutes
+CELERY_TASK_RETRY_JITTER = True
+
+# Result expiration
+CELERY_RESULT_EXPIRES = 3600  # 1 hour
+
+# ============================================================================
+# FIREBASE CONFIGURATION
+# ============================================================================
+
+# Firebase credentials
+FIREBASE_CREDENTIALS_PATH = os.getenv('FIREBASE_CREDENTIALS_PATH', '')
+FIREBASE_DATABASE_URL = os.getenv('FIREBASE_DATABASE_URL', '')
+FIREBASE_STORAGE_BUCKET = os.getenv('FIREBASE_STORAGE_BUCKET', '')
+
+# Firebase authentication settings
+FIREBASE_TOKEN_CACHE_TTL = int(os.getenv('FIREBASE_TOKEN_CACHE_TTL', '300'))  # 5 minutes default
+
+# ============================================================================
+# GOOGLE CLOUD VISION AI CONFIGURATION
+# ============================================================================
+
+# Vision AI settings
+VISION_AI_ENABLED = os.getenv('VISION_AI_ENABLED', 'True').lower() == 'true'
+VISION_AI_MAX_RESULTS = int(os.getenv('VISION_AI_MAX_RESULTS', '10'))
+
+# ============================================================================
+# IMAGE PROCESSING CONFIGURATION
+# ============================================================================
+
+# Image upload settings
+MAX_IMAGE_SIZE_MB = 10  # Maximum upload size
+MAX_IMAGE_SIZE_BYTES = MAX_IMAGE_SIZE_MB * 1024 * 1024
+COMPRESSED_IMAGE_SIZE_MB = 2  # Target compression size
+COMPRESSED_IMAGE_SIZE_BYTES = COMPRESSED_IMAGE_SIZE_MB * 1024 * 1024
+
+# Supported image formats
+ALLOWED_IMAGE_FORMATS = ['JPEG', 'PNG', 'WEBP']
+ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp']
+
+# Image processing timeouts
+IMAGE_PROCESSING_TIMEOUT = 30  # seconds
+IMAGE_ANALYSIS_TIMEOUT = 60  # seconds
+
+# ML Model settings
+ANOMALY_DETECTION_THRESHOLD = 0.70  # 70% confidence
+DAMAGE_CLASSIFICATION_THRESHOLD = 0.75  # 75% confidence
+OCR_CONFIDENCE_THRESHOLD = 0.80  # 80% confidence
+
+# Anomaly types
+ANOMALY_TYPES = [
+    ('CORROSION', 'Corrosión'),
+    ('CRACK', 'Grieta'),
+    ('LEAK', 'Fuga'),
+    ('WEAR', 'Desgaste'),
+    ('DEFORMATION', 'Deformación'),
+    ('OTHER', 'Otro'),
+]
+
+# Damage types
+DAMAGE_TYPES = [
+    ('CORROSION', 'Corrosión'),
+    ('MECHANICAL_WEAR', 'Desgaste Mecánico'),
+    ('ELECTRICAL_FAILURE', 'Falla Eléctrica'),
+    ('HYDRAULIC_LEAK', 'Fuga Hidráulica'),
+    ('STRUCTURAL_CRACK', 'Grieta Estructural'),
+    ('THERMAL_DAMAGE', 'Daño Térmico'),
+]
+
+# Severity levels
+SEVERITY_LEVELS = [
+    ('LOW', 'Bajo'),
+    ('MEDIUM', 'Medio'),
+    ('HIGH', 'Alto'),
+    ('CRITICAL', 'Crítico'),
+]
+
+# ============================================================================
+# COST OPTIMIZATION CONFIGURATION
+# ============================================================================
+
+# Budget limits
+MONTHLY_BUDGET_LIMIT_USD = int(os.getenv('MONTHLY_BUDGET_LIMIT_USD', '1000'))
+BUDGET_WARNING_THRESHOLD = 0.80  # Alert at 80%
+BUDGET_THROTTLE_THRESHOLD = 0.90  # Throttle at 90%
+
+# Caching settings
+VISION_AI_CACHE_DAYS = 30
+IMAGE_RESULT_CACHE_HOURS = 24
+
+# Batch processing
+BATCH_SIZE_IMAGES = 10
+BATCH_PROCESSING_ENABLED = True
+OFF_PEAK_HOURS_START = 22  # 10 PM
+OFF_PEAK_HOURS_END = 6  # 6 AM

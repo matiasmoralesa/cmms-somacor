@@ -132,6 +132,14 @@ dist
 service-account-key.json
 gcp-credentials.json
 
+# Firebase
+firebase-service-account.json
+*-firebase-*.json
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
 # Airflow
 airflow.db
 airflow.cfg

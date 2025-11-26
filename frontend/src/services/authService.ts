@@ -1,6 +1,13 @@
 /**
- * Authentication service
+ * Authentication service - Firebase Authentication
  */
+import { 
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  User as FirebaseUser
+} from 'firebase/auth';
+import { auth } from '../config/firebase';
 import api from './api';
 import type {
   LoginCredentials,
@@ -13,29 +20,59 @@ import type {
 
 class AuthService {
   async login(credentials: LoginCredentials): Promise<LoginResponse> {
-    const response = await api.post<LoginResponse>('/auth/login/', credentials);
-    
-    // Store tokens
-    if (response.data.access) {
-      localStorage.setItem('accessToken', response.data.access);
-      localStorage.setItem('refreshToken', response.data.refresh);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
+    try {
+      // Sign in with Firebase
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        credentials.email,
+        credentials.password
+      );
+      
+      // Get Firebase ID token
+      const idToken = await userCredential.user.getIdToken();
+      
+      // Store Firebase token
+      localStorage.setItem('firebaseToken', idToken);
+      
+      // Get user profile from backend (includes Django user data)
+      const profile = await this.getProfile();
+      
+      // Store user data
+      localStorage.setItem('user', JSON.stringify(profile));
+      
+      // Map User to LoginResponse.user format
+      return {
+        access: idToken,
+        refresh: '', // Firebase handles refresh automatically
+        user: {
+          id: profile.id,
+          email: profile.email,
+          full_name: profile.full_name,
+          role: profile.role,
+          role_display: profile.role_display,
+          is_admin: profile.role === 'ADMIN',
+          is_supervisor: profile.role === 'SUPERVISOR',
+          is_operador: profile.role === 'OPERADOR',
+          employee_status: profile.employee_status,
+          license_status: profile.license_status,
+          permissions: [], // Will be populated from backend if needed
+        },
+      };
+    } catch (error: any) {
+      console.error('Login error:', error);
+      throw new Error(error.message || 'Login failed');
     }
-    
-    return response.data;
   }
 
   async logout(): Promise<void> {
-    const refreshToken = localStorage.getItem('refreshToken');
-    
     try {
-      await api.post('/auth/logout/', { refresh_token: refreshToken });
+      // Sign out from Firebase
+      await signOut(auth);
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
-      // Clear local storage regardless of API call result
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
+      // Clear local storage
+      localStorage.removeItem('firebaseToken');
       localStorage.removeItem('user');
     }
   }
@@ -67,6 +104,23 @@ class AuthService {
     return response.data;
   }
 
+  async getIdToken(): Promise<string | null> {
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        return await user.getIdToken();
+      } catch (error) {
+        console.error('Error getting ID token:', error);
+        return null;
+      }
+    }
+    return null;
+  }
+
+  onAuthStateChanged(callback: (user: FirebaseUser | null) => void) {
+    return onAuthStateChanged(auth, callback);
+  }
+
   getStoredUser(): User | null {
     const userStr = localStorage.getItem('user');
     if (userStr) {
@@ -80,15 +134,20 @@ class AuthService {
   }
 
   getAccessToken(): string | null {
-    return localStorage.getItem('accessToken');
+    return localStorage.getItem('firebaseToken');
   }
 
   getRefreshToken(): string | null {
-    return localStorage.getItem('refreshToken');
+    // Firebase handles refresh automatically
+    return null;
   }
 
   isAuthenticated(): boolean {
-    return !!this.getAccessToken();
+    return !!auth.currentUser || !!this.getAccessToken();
+  }
+
+  getCurrentUser(): FirebaseUser | null {
+    return auth.currentUser;
   }
 }
 

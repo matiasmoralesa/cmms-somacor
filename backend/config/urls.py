@@ -26,5 +26,6 @@ urlpatterns = [
     path('api/v1/notifications/', include('apps.notifications.urls')),
     path('api/v1/reports/', include('apps.reports.urls')),
     path('api/v1/machine-status/', include('apps.machine_status.urls')),
+    path('api/v1/images/', include('apps.images.urls')),  # Image processing and analysis
     path('api/v1/core/', include('apps.core.urls')),
 ]

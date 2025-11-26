@@ -151,3 +151,29 @@ LOGGING = {
         'level': 'INFO',
     },
 }
+
+
+# Railway.app Configuration
+if os.getenv('RAILWAY_ENVIRONMENT'):
+    # Railway detectado
+    ALLOWED_HOSTS.append('.railway.app')
+    
+    # Railway proporciona DATABASE_URL automáticamente
+    if os.getenv('DATABASE_URL'):
+        DATABASES = {
+            'default': dj_database_url.config(
+                default=os.getenv('DATABASE_URL'),
+                conn_max_age=600,
+                conn_health_checks=True,
+            )
+        }
+    
+    # Firebase credentials desde variable de entorno
+    if os.getenv('FIREBASE_CREDENTIALS'):
+        import json
+        FIREBASE_CREDENTIALS = json.loads(os.getenv('FIREBASE_CREDENTIALS'))
+    
+    # Deshabilitar Google Cloud Storage en Railway
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
