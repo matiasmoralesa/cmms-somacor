@@ -110,10 +110,20 @@ CORS_ALLOW_HEADERS = [
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Media files (Cloud Storage)
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME', 'argon-edge-478500-i8-cmms-documents')
-GS_PROJECT_ID = os.getenv('GCP_PROJECT_ID', 'argon-edge-478500-i8')
+# Media files - Usar sistema de archivos local por defecto
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Google Cloud Storage (solo si no es Railway)
+if not os.getenv('RAILWAY_ENVIRONMENT'):
+    try:
+        from storages.backends.gcloud import GoogleCloudStorage
+        DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+        GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME', 'argon-edge-478500-i8-cmms-documents')
+        GS_PROJECT_ID = os.getenv('GCP_PROJECT_ID', 'argon-edge-478500-i8')
+    except ImportError:
+        pass  # Usar FileSystemStorage si storages no está disponible
 
 # Cache - Optimizado para Free Tier
 # Usar cache local en memoria para evitar costos de Redis
@@ -173,12 +183,3 @@ if os.getenv('RAILWAY_ENVIRONMENT'):
     if os.getenv('FIREBASE_CREDENTIALS'):
         import json
         FIREBASE_CREDENTIALS = json.loads(os.getenv('FIREBASE_CREDENTIALS'))
-    
-    # Deshabilitar Google Cloud Storage en Railway
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    
-    # Deshabilitar módulos de GCP que no se usan en Railway
-    GS_BUCKET_NAME = None
-    GS_PROJECT_ID = None
