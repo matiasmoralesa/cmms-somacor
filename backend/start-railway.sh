@@ -3,12 +3,13 @@ set -e
 
 echo "🚂 Starting Railway deployment..."
 
-# Verificar variables de entorno críticas
+# Forzar el uso de railway settings si no está configurado
 if [ -z "$DJANGO_SETTINGS_MODULE" ]; then
-    echo "❌ ERROR: DJANGO_SETTINGS_MODULE no está configurado"
-    exit 1
+    echo "⚠️  DJANGO_SETTINGS_MODULE no configurado, usando config.settings.railway"
+    export DJANGO_SETTINGS_MODULE=config.settings.railway
 fi
 
+# Verificar DATABASE_URL
 if [ -z "$DATABASE_URL" ]; then
     echo "❌ ERROR: DATABASE_URL no está configurado"
     exit 1
@@ -16,6 +17,7 @@ fi
 
 echo "✅ Variables de entorno verificadas"
 echo "📦 DJANGO_SETTINGS_MODULE: $DJANGO_SETTINGS_MODULE"
+echo "📦 RAILWAY_ENVIRONMENT: $RAILWAY_ENVIRONMENT"
 
 # Ejecutar collectstatic
 echo "📦 Recolectando archivos estáticos..."

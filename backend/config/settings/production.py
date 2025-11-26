@@ -116,13 +116,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Google Cloud Storage (solo si no es Railway)
+# Verificar que storages esté disponible antes de intentar importar
 if not os.getenv('RAILWAY_ENVIRONMENT'):
     try:
-        from storages.backends.gcloud import GoogleCloudStorage
-        DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-        GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME', 'argon-edge-478500-i8-cmms-documents')
-        GS_PROJECT_ID = os.getenv('GCP_PROJECT_ID', 'argon-edge-478500-i8')
-    except ImportError:
+        import importlib.util
+        if importlib.util.find_spec('storages') is not None:
+            from storages.backends.gcloud import GoogleCloudStorage
+            DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+            GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME', 'argon-edge-478500-i8-cmms-documents')
+            GS_PROJECT_ID = os.getenv('GCP_PROJECT_ID', 'argon-edge-478500-i8')
+    except (ImportError, Exception):
         pass  # Usar FileSystemStorage si storages no está disponible
 
 # Cache - Optimizado para Free Tier
