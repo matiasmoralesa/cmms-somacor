@@ -1,0 +1,28 @@
+# Variables de Entorno para Railway.app
+# Copia y pega estas variables en Railway Dashboard -> Variables
+
+# ===== DJANGO CONFIGURATION =====
+DJANGO_SETTINGS_MODULE=config.settings.railway
+SECRET_KEY=9+^*okt5#jbt32$zvw7q7q0*w)9^wq=!fw1wq+m^j8ksr)*q_=
+DEBUG=False
+ENVIRONMENT=production
+
+# ===== FIREBASE CONFIGURATION =====
+FIREBASE_DATABASE_URL=https://cmms-somacor-prod.firebaseio.com
+FIREBASE_STORAGE_BUCKET=cmms-somacor-prod.appspot.com
+FIREBASE_TOKEN_CACHE_TTL=300
+
+# ===== FIREBASE CREDENTIALS =====
+# IMPORTANTE: Necesitas convertir el archivo JSON a una sola línea
+# Ejecuta este comando en PowerShell:
+# $json = Get-Content cmms-somacor-prod-firebase-adminsdk-fbsvc-29f640a5c9.json -Raw; $json = $json -replace '\s+', ' '; $json = $json.Trim(); Write-Host "FIREBASE_CREDENTIALS=$json"
+# 
+# Luego copia el resultado y agrégalo como variable en Railway:
+# FIREBASE_CREDENTIALS={"type":"service_account",...}
+
+# ===== CORS CONFIGURATION =====
+CORS_ALLOWED_ORIGINS=https://cmms-somacor-prod.web.app
+
+# ===== NOTA IMPORTANTE =====
+# La variable DATABASE_URL se crea automáticamente cuando agregas PostgreSQL en Railway
+# No necesitas configurarla manualmente
