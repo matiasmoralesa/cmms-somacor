@@ -5,4 +5,4 @@ nixPkgs = ['python39', 'postgresql']
 cmds = ['pip install -r backend/requirements-railway.txt']
 
 [start]
-cmd = 'cd backend && export DJANGO_SETTINGS_MODULE=config.settings.railway && python manage.py migrate && python manage.py create_admin && exec gunicorn config.wsgi:application --bind "0.0.0.0:${PORT:-8000}" --workers 2 --timeout 120 --env DJANGO_SETTINGS_MODULE=config.settings.railway'
+cmd = 'cd backend && python manage.py migrate --settings=config.settings.railway && python manage.py create_admin --settings=config.settings.railway && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --log-level info'
