@@ -12,7 +12,8 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Database - MySQL Configuration
-# Railway MySQL provides: MYSQLHOST, MYSQLPORT, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE
+# Supports PlanetScale, Railway MySQL, or any MySQL database
+# PlanetScale provides: MYSQLHOST, MYSQLPORT, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE
 # Or you can use DATABASE_URL in MySQL format: mysql://user:password@host:port/database
 
 if os.getenv('DATABASE_URL'):
@@ -25,7 +26,16 @@ if os.getenv('DATABASE_URL'):
         )
     }
 else:
-    # If individual MySQL variables are provided
+    # If individual MySQL variables are provided (PlanetScale, Railway, etc.)
+    db_options = {
+        'charset': 'utf8mb4',
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    }
+    
+    # PlanetScale requires SSL
+    if 'psdb.cloud' in os.getenv('MYSQLHOST', ''):
+        db_options['ssl_mode'] = 'REQUIRED'
+    
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -34,10 +44,7 @@ else:
             'PASSWORD': os.getenv('MYSQLPASSWORD', ''),
             'HOST': os.getenv('MYSQLHOST', 'localhost'),
             'PORT': os.getenv('MYSQLPORT', '3306'),
-            'OPTIONS': {
-                'charset': 'utf8mb4',
-                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            },
+            'OPTIONS': db_options,
             'CONN_MAX_AGE': 600,
         }
     }
