@@ -11,14 +11,36 @@ DEBUG = False
 # Hosts
 ALLOWED_HOSTS = ['*']
 
-# Database - Railway provides DATABASE_URL automatically
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+# Database - MySQL Configuration
+# Railway MySQL provides: MYSQLHOST, MYSQLPORT, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE
+# Or you can use DATABASE_URL in MySQL format: mysql://user:password@host:port/database
+
+if os.getenv('DATABASE_URL'):
+    # If DATABASE_URL is provided (MySQL format)
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv('DATABASE_URL'),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+else:
+    # If individual MySQL variables are provided
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv('MYSQLDATABASE', 'cmms_db'),
+            'USER': os.getenv('MYSQLUSER', 'root'),
+            'PASSWORD': os.getenv('MYSQLPASSWORD', ''),
+            'HOST': os.getenv('MYSQLHOST', 'localhost'),
+            'PORT': os.getenv('MYSQLPORT', '3306'),
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+            'CONN_MAX_AGE': 600,
+        }
+    }
 
 # Security Settings
 SECURE_SSL_REDIRECT = False
